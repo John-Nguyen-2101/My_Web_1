@@ -1,0 +1,328 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+    "Apple Color Emoji", "Segoe UI Emoji";
+ 
+  }
+  :root {
+    --accent: rgba(34, 234, 121, 0.85);
+    --ink: rgba(0, 0, 0, 0.88);
+    --border: rgba(0, 0, 0, 0.12);
+    --muted: rgba(0, 0, 0, 0.06);
+    --navHover: rgba(0, 0, 0, 0.04);
+  }
+
+  body {
+    margin: 0;
+    color: var(--ink);
+   
+  }
+
+  /* ===== HEADER ===== */
+  .header1 {
+    background: #ffffff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+  }
+
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+  }
+
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #111827;
+    transition: 0.3s;
+  }
+
+  .logo:hover {
+    color: #6d28d9;
+  }
+
+  nav {
+    display: flex;
+    gap: 16px;
+    margin-left: 30px;
+  }
+
+  nav a {
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #374151;
+    transition: 0.3s;
+  }
+
+  nav a:hover {
+    background: #f3f4f6;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .search-box input {
+    width: 260px;
+    padding: 8px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s;
+  }
+
+  .search-box input:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 2px rgba(99,102,241,0.2);
+  }
+
+  .btn {
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  .btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+  }
+  .btn-login {
+    color: #111827;
+  }
+
+  .btn-signup {
+    background: #6366f1;
+    color: white;
+  }
+
+  .btn-signup:hover {
+    background: #4f46e5;
+  }
+
+  /* ===== MAIN ===== */
+  main {
+    flex: 1;
+    padding: 60px 20px;
+    text-align: center;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: #111827;
+    color: #f3f4f6;
+    padding: 40px 20px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .footer-column h3 {
+    margin-bottom: 12px;
+    font-size: 16px;
+  }
+
+  .footer-column a {
+    display: block;
+    text-decoration: none;
+    color: #d1d5db;
+    font-size: 14px;
+    margin-bottom: 8px;
+    transition: 0.3s;
+  }
+
+  .footer-column a:hover {
+    color: #ffffff;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 13px;
+    color: #9ca3af;
+  }
+
+/* =========================
+   MAIN RESPONSIVE
+========================= */
+
+/* meta pill xuống hàng đẹp hơn */
+.metaRow {
+    justify-content: center;
+  }
+  
+  /* Controls: mobile-friendly */
+  .controls {
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(6px);
+  }
+  
+  /* Group lines: tự co giãn theo màn hình */
+  .groupRow {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr)); /* desktop: 3 cột */
+    gap: 5px;
+  }
+  
+  /* lineGrid full width trong từng ô */
+  .lineGrid {
+    width: 100%;
+  }
+  
+  /* video responsive chuẩn aspect ratio */
+  .videoContainer {
+    width: 100%;
+    margin-top: 20px;
+  }
+  .video {
+    margin-top: 20px;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,0.12);
+  }
+.active {
+    background: var(--navHover);
+    color: white;
+  }
+  /* =========================
+     BREAKPOINT: <= 1024px (Tablet)
+  ========================= */
+  @media (max-width: 1024px) {
+    .page {
+      max-width: 860px;
+      padding: 20px 14px 56px;
+    }
+  
+    .search-box input {
+      width: 220px;
+    }
+  
+    .groupRow {
+      grid-template-columns: repeat(2, minmax(0, 1fr)); /* tablet: 2 cột */
+      gap: 5px;
+    }
+  }
+  
+  /* =========================
+     BREAKPOINT: <= 768px (Mobile)
+  ========================= */
+  @media (max-width: 768px) {
+    /* Header */
+    .header-inner {
+      height: auto;
+      padding: 10px 0;
+    }
+  
+    /* nav desktop ẩn */
+    .nav-links {
+      display: none;
+    }
+  
+    /* show menu button */
+    .menuBtn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    /* search box ẩn trên mobile (nếu muốn hiện thì bỏ dòng này) */
+    .search-box {
+      display: none;
+    }
+  
+    /* main */
+    .h1 {
+      font-size: 22px;
+    }
+  
+    .metaPill {
+      font-size: 12px;
+      padding: 6px 9px;
+    }
+  
+    /* Controls: các nút xuống hàng đẹp */
+    .row {
+      gap: 8px;
+    }
+  
+    .btn, .btn1 {
+      padding: 10px 12px;
+    }
+  
+    /* Group: 1 cột */
+    .groupRow {
+      grid-template-columns: 1fr;
+      gap: 5px;
+    }
+  
+    /* Footer: spacing gọn */
+    footer {
+      padding: 28px 16px;
+    }
+    .footer-grid {
+      gap: 18px;
+    }
+  }
+  
+  /* =========================
+     BREAKPOINT: <= 480px (Small Mobile)
+  ========================= */
+  @media (max-width: 480px) {
+    .container {
+      padding: 0 14px;
+    }
+  
+    .logo {
+      font-size: 20px;
+    }
+  
+    .h1 {
+      font-size: 20px;
+    }
+  
+    .controls {
+      padding: 12px;
+      border-radius: 14px;
+    }
+  
+    .beatChip {
+      width: 28px;
+      height: 28px;
+      border-radius: 9px;
+    }
+  
+    .chordCell {
+      font-size: 11px;
+    }
+    .lyricCell {
+      font-size: 11px;
+    }
+  
+    .btn1 {
+      padding: 9px 10px;
+    }
+  }

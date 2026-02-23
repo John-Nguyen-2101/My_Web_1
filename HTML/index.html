@@ -5,11 +5,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Lufe Audio - Metronome Lyrics Demo</title>
+    <link rel="stylesheet" href="../CSS/Main.css">
     <link rel="stylesheet" href="../CSS/Style.css" />
+    
   </head>
   <body>
+    <header class="header1">
+      <div class="container header-inner">
+        <div style="display:flex; align-items:center;">
+          <a href="#" class="logo">Lufe Audio</a>
+          
+        </div>
+  
+        <div class="header-right">
+          <nav class="nav-links">
+            <a href="#">Trang Chủ</a>
+            <a href="../HTML/index.html" class="active">Hợp âm</a>
+            <a href="#">Dịch vụ</a>
+            <a href="#">Khóa học</a>
+            <a href="#">Liên hệ</a>
+          </nav>
+          <button class="menuBtn" id="menuBtn" aria-label="Open menu">☰</button>
+          <!-- <div class="search-box">
+            <input type="text" placeholder="Search artist, album, course..." />
+          </div>
+          <a href="#" class="btn btn-login">Log in</a>
+          <a href="#" class="btn btn-signup">Sign up</a> -->
+        </div>
+      </div>
+    </header>
+    <div class="mobileNav" id="mobileNav">
+      <div class="mobileNavInner">
+        <a href="#">Trang Chủ</a>
+        <a href="../HTML/index.html" class="active">Hợp âm</a>
+        <a href="#">Dịch vụ</a>
+        <a href="#">Khóa học</a>
+        <a href="#">Liên hệ</a>
+      </div>
+    </div>
     <main class="page">
-      <header class="header">
+      <header >
+        
         <h1 id="songTitle" class="h1"></h1>
 
         <div class="metaRow">
@@ -28,21 +64,41 @@
 
           <div id="beatBox" class="beatBox"></div>
         </div>
-
+        <div class="row toneRow">
+            <button id="btnDown" class="btn1">-</button>
+            <span class="btn1" id="transposeLabel">Transpose: 0</span>
+            <button id="btnUp" class="btn1">+</button>
+            <button id="btnReset" class="btn1">Reset</button>
+          </div>
         <div class="sliderRow">
           <label class="label">
             Tempo: <b><span id="bpmLabel">80</span> BPM</b>
           </label>
           <input id="bpmRange" class="slider" type="range" min="40" max="220" value="80" />
-          <div class="sliderHint">Tip: tập chậm rồi tăng dần. (Người học chỉ chỉnh tempo, không chỉnh nhịp)</div>
+          <div class="sliderHint">Tip: tập chậm rồi tăng dần. </div>
         </div>
       </section>
-
+      
       <section class="songBox">
         <div id="songRoot"></div>
       </section>
-
-      <section class="notes">
+      <section class="heroVideo">
+        <div class="videoContainer">
+          <iframe class="video"
+            id="mainVideo"
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/FgIijOdivPk?si=d8FTxn3fEj0UL94J=0" 
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      
+        
+      </section>
+      <!-- <section class="notes">
         <div class="noteTitle">Gợi ý nâng cấp sau:</div>
         <ul class="ul">
           <li>Subdivision: 1-&amp;-2-&amp; (simple) / 1-la-li (6/8) để người mới dễ vào</li>
@@ -50,9 +106,86 @@
           <li>Audio hợp âm (block chord) + điệu rải</li>
           <li>Mỗi dòng có nhiều bars (không chỉ 1 bar)</li>
         </ul>
-      </section>
-    </main>
+      </section> -->
 
+    </main>
+     <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+
+      <div class="footer-column">
+        <h3>Lufe Audio</h3>
+        <p style="font-size:14px; color:#9ca3af;">
+          Cung cấp các sản phẩm, dịch vụ và công cụ học nhạc.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h3>Services</h3>
+        <a href="#">Mixing & Mastering</a>
+        <a href="#">Đặt làm nhạc</a>
+        <a href="#">Thu âm</a>
+        <a href="#">Khóa học</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Company</h3>
+        <a href="#">Về chúng tôi</a>
+        <!-- <a href="#">Careers</a> -->
+        <!-- <a href="#">Blog</a> -->
+        <a href="#">Contact</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Follow Us</h3>
+        <a href="#">YouTube</a>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">Facebook</a>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 Lufe Audio. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileNav = document.getElementById("mobileNav");
+  
+    function closeMenu() {
+      mobileNav.classList.remove("isOpen");
+      menuBtn.textContent = "☰";
+      menuBtn.setAttribute("aria-expanded", "false");
+    }
+  
+    menuBtn.setAttribute("aria-expanded", "false");
+  
+    menuBtn.addEventListener("click", () => {
+      const isOpen = mobileNav.classList.toggle("isOpen");
+      menuBtn.textContent = isOpen ? "✕" : "☰";
+      menuBtn.setAttribute("aria-expanded", String(isOpen));
+    });
+  
+    // bấm link thì tự đóng
+    mobileNav.addEventListener("click", (e) => {
+      if (e.target.tagName === "A") closeMenu();
+    });
+  
+    // click ra ngoài thì đóng
+    document.addEventListener("click", (e) => {
+      if (!mobileNav.classList.contains("isOpen")) return;
+      const clickedInside = mobileNav.contains(e.target) || menuBtn.contains(e.target);
+      if (!clickedInside) closeMenu();
+    });
+  
+    // nhấn ESC đóng
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeMenu();
+    });
+  </script>
     <script defer src="../JS/app.js"></script>
   </body>
 </html>

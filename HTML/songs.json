@@ -1,0 +1,184 @@
+[
+  {
+    "id": "ngay-xuan",
+    "title": "Ngày xuân long phụng sum vầy",
+    "author": "Quang Huy",
+    "style": "Ballad",
+    "recommendedTempo": "60–80 BPM",
+    "bpm": 80,
+    "timeSigTop": 2,
+    "timeSigBottom": 4,
+    "meterMode": "simple",
+    "lines": [
+      { "section": "ĐIỆP KHÚC", "id": "section1" },
+
+      {
+        "tokens": [
+          { "lyric": "Mừng", "chord": "C", "beatIndex": 1 },
+          { "lyric": "tết", "chord": null, "beatIndex": 1 },
+          { "lyric": "đến", "chord": " ", "beatIndex": 2 },
+          { "lyric": "mang", "chord": null, "beatIndex": 2 },
+          { "lyric": "lộc", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "đến", "chord": "G", "beatIndex": 1 },
+          { "lyric": "nhà", "chord": null, "beatIndex": 1 },
+          { "lyric": "nhà", "chord": " ", "beatIndex": 2 },
+          { "lyric": "cánh", "chord": null, "beatIndex": 2 },
+          { "lyric": "mai", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "vàng", "chord": "Am", "beatIndex": 1 },
+          { "lyric": "cành", "chord": null, "beatIndex": 1 },
+          { "lyric": "đào", "chord": null, "beatIndex": 1 },
+          { "lyric": "hồng", "chord": " ", "beatIndex": 2 },
+          { "lyric": "thắm", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "tươi", "chord": "Em", "beatIndex": 1 },
+          { "lyric": "", "chord": " ", "beatIndex": 2 },
+          { "lyric": "", "chord": null, "beatIndex": 2 },
+          { "lyric": "", "chord": null, "beatIndex": 2 },
+          { "lyric": "", "chord": null, "beatIndex": 2 }
+        ]
+      },
+
+      {
+        "tokens": [
+          { "lyric": "Chúc", "chord": "F", "beatIndex": 1 },
+          { "lyric": "cụ", "chord": null, "beatIndex": 1 },
+          { "lyric": "già", "chord": " ", "beatIndex": 2 },
+          { "lyric": "được", "chord": null, "beatIndex": 2 },
+          { "lyric": "sống", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "lâu", "chord": "C", "beatIndex": 1 },
+          { "lyric": "sống", "chord": null, "beatIndex": 1 },
+          { "lyric": "khỏe", "chord": " ", "beatIndex": 2 },
+          { "lyric": "cùng", "chord": null, "beatIndex": 2 },
+          { "lyric": "con", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "Cháu", "chord": "F", "beatIndex": 1 },
+          { "lyric": "sang", "chord": null, "beatIndex": 1 },
+          { "lyric": "năm", "chord": " ", "beatIndex": 2 },
+          { "lyric": "lại", "chord": null, "beatIndex": 2 },
+          { "lyric": "", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "đón", "chord": "G", "beatIndex": 1 },
+          { "lyric": "tết", "chord": null, "beatIndex": 1 },
+          { "lyric": "sang", "chord": " ", "beatIndex": 2 },
+          { "lyric": "", "chord": null, "beatIndex": 2 },
+          { "lyric": "", "chord": null, "beatIndex": 2 }
+        ]
+      },
+
+      {
+        "tokens": [
+          { "lyric": "Và", "chord": "C", "beatIndex": 1 },
+          { "lyric": "kính", "chord": null, "beatIndex": 1 },
+          { "lyric": "chúc", "chord": " ", "beatIndex": 2 },
+          { "lyric": "người", "chord": null, "beatIndex": 2 },
+          { "lyric": "người", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "sẽ", "chord": "G", "beatIndex": 1 },
+          { "lyric": "gặp", "chord": null, "beatIndex": 1 },
+          { "lyric": "lành", "chord": " ", "beatIndex": 2 },
+          { "lyric": "tết", "chord": null, "beatIndex": 2 },
+          { "lyric": "sau", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "được", "chord": "Am", "beatIndex": 1 },
+          { "lyric": "nhiều", "chord": null, "beatIndex": 1 },
+          { "lyric": "lộc", "chord": null, "beatIndex": 1 },
+          { "lyric": "hơn", "chord": " ", "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "tết", "chord": null, "beatIndex": 2 },
+          { "lyric": "nay", "chord": "Em", "beatIndex": 1 },
+          { "lyric": "", "chord": " ", "beatIndex": 2 },
+          { "lyric": "", "chord": null, "beatIndex": 2 },
+          { "lyric": "", "chord": null, "beatIndex": 2 }
+        ]
+      },
+
+      {
+        "tokens": [
+          { "lyric": "tết", "chord": "F", "beatIndex": 1 },
+          { "lyric": "đến", "chord": null, "beatIndex": 1 },
+          { "lyric": "đoàn", "chord": null, "beatIndex": 1 },
+          { "lyric": "tụ", "chord": " ", "beatIndex": 2 },
+          { "lyric": "cùng", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "ở", "chord": null, "beatIndex": 2 },
+          { "lyric": "bên", "chord": "C", "beatIndex": 1 },
+          { "lyric": "bếp", "chord": null, "beatIndex": 1 },
+          { "lyric": "hồng", "chord": " ", "beatIndex": 2 },
+          { "lyric": "và", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "nồi", "chord": null, "beatIndex": 2 },
+          { "lyric": "bánh", "chord": "F", "beatIndex": 1 },
+          { "lyric": "chưng", "chord": null, "beatIndex": 1 },
+          { "lyric": "xanh", "chord": " ", "beatIndex": 2 },
+          { "lyric": "", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "chờ", "chord": null, "beatIndex": 2 },
+          { "lyric": "xuân", "chord": "F", "beatIndex": 1 },
+          { "lyric": "đang", "chord": null, "beatIndex": 1 },
+          { "lyric": "sang", "chord": " ", "beatIndex": 2 },
+          { "lyric": "", "chord":null, "beatIndex": 2 }
+        ]
+      },
+
+      { "section": "VERSE", "id": "verse" },
+
+      {
+        "tokens": [
+          { "lyric": "Cánh", "chord": "C", "beatIndex": 1 },
+          { "lyric": "én", "chord": null, "beatIndex": 1 },
+          { "lyric": "nơi", "chord": " ", "beatIndex": 2 },
+          { "lyric": "nơi", "chord": null, "beatIndex": 2 },
+          { "lyric": "khắp", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "phố", "chord": "G", "beatIndex": 1 },
+          { "lyric": "phường", "chord": null, "beatIndex": 1 },
+          { "lyric": "nhà", "chord": " ", "beatIndex": 2 },
+          { "lyric": "nhà", "chord": null, "beatIndex": 2 },
+          { "lyric": "", "chord": null, "beatIndex": 2 }
+        ]
+      }
+    ]
+  }
+]

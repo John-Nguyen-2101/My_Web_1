@@ -1,115 +1,32 @@
-// app.js
-/**
- * Static HTML/CSS/JS version of your React page
- * - Metronome (WebAudio)
- * - Count-in 1 bar
- * - Beat chips
- * - 2-lane grid (chord row + lyric row) with perfect column alignment
- */
-
+let elTitle, elAuthor, elStyle, elTimeSig, elTempoHint, elBpmNow;
+let elBeatBox, elSongRoot;
+let btnPlay, btnStop;
+let bpmRange, bpmLabel;
+let btnUp, btnDown, btnReset, transposeLabel;
 // ------------------------ DATA ------------------------
-const demoSong = {
-    title: "Ngày xuân long phụng sum vầy",
-    author: "Quang Huy",
-    style: "Ballad (demo nhiều nhịp)",
-    recommendedTempo: "60–80 BPM (mới tập), 80–96 BPM (chuẩn hơn)",
-    bpm: 80,
-    timeSigTop: 2, // 2 | 3 | 4 | 6
-    timeSigBottom: 4, // 4 | 8
-    meterMode: "simple", // "simple" | "sixEighth-eighth" | "sixEighth-dottedQuarter"
-    lines: [
-      { section: "ĐIỆP KHÚC", id: "section1" },
-  
-      {
-        tokens: [
-          { lyric: "Mừng", chord: "C", beatIndex: 1 },
-          { lyric: "tết", chord: null, beatIndex: 1 },
-          { lyric: "đến", chord: "2", beatIndex: 2 },
-          { lyric: "mang", chord: null, beatIndex: 2 },
-          { lyric: "lộc", chord: null, beatIndex: 2 },
-        ],
-      },
-      {
-        tokens: [
-          { lyric: "đến", chord: "G", beatIndex: 1 },
-          { lyric: "nhà", chord: null, beatIndex: 1 },
-          { lyric: "nhà", chord: "2", beatIndex: 2 },
-          { lyric: "cánh", chord: null, beatIndex: 2 },
-          { lyric: "mai", chord: null, beatIndex: 2 },
-        ],
-      },
-      {
-        tokens: [
-          { lyric: "vàng", chord: "Am", beatIndex: 1 },
-          { lyric: "cành", chord: null, beatIndex: 1 },
-          { lyric: "đào", chord: null, beatIndex: 1 },
-          { lyric: "hồng", chord: "2", beatIndex: 2 },
-          { lyric: "thắm", chord: null, beatIndex: 2 },
-        ],
-      },
-      { tokens: [{ lyric: "tươi", chord: "Em", beatIndex: 1 }, { lyric: "", chord: "2", beatIndex: 2 }] },
-  
-      {
-        tokens: [
-          { lyric: "Chúc", chord: "F", beatIndex: 1 },
-          { lyric: "cụ", chord: null, beatIndex: 1 },
-          { lyric: "già", chord: "2", beatIndex: 2 },
-          { lyric: "được", chord: null, beatIndex: 2 },
-          { lyric: "sống", chord: null, beatIndex: 2 },
-        ],
-      },
-      {
-        tokens: [
-          { lyric: "lâu", chord: "C", beatIndex: 1 },
-          { lyric: "sống", chord: null, beatIndex: 1 },
-          { lyric: "khỏe", chord: "2", beatIndex: 2 },
-          { lyric: "cùng", chord: null, beatIndex: 2 },
-          { lyric: "con", chord: null, beatIndex: 2 },
-        ],
-      },
-      {
-        tokens: [
-          { lyric: "Cháu", chord: "F", beatIndex: 1 },
-          { lyric: "sang", chord: null, beatIndex: 1 },
-          { lyric: "năm", chord: "2", beatIndex: 2 },
-          { lyric: "lại", chord: null, beatIndex: 2 },
-        ],
-      },
-      { tokens: [{ lyric: "đón", chord: "G", beatIndex: 1 }, { lyric: "tết", chord: null, beatIndex: 1 }, { lyric: "sang", chord: "2", beatIndex: 2 }] },
-  
-      {
-        tokens: [
-          { lyric: "Và", chord: "C", beatIndex: 1 },
-          { lyric: "kính", chord: null, beatIndex: 1 },
-          { lyric: "chúc", chord: "2", beatIndex: 2 },
-          { lyric: "người", chord: null, beatIndex: 2 },
-          { lyric: "người", chord: null, beatIndex: 2 },
-        ],
-      },
-      {
-        tokens: [
-          { lyric: "sẽ", chord: "G", beatIndex: 1 },
-          { lyric: "gặp", chord: null, beatIndex: 1 },
-          { lyric: "lành", chord: "2", beatIndex: 2 },
-          { lyric: "tết", chord: null, beatIndex: 2 },
-          { lyric: "sau", chord: null, beatIndex: 2 },
-        ],
-      },
-      { tokens: [{ lyric: "được", chord: "Am", beatIndex: 1 }, { lyric: "nhiều", chord: null, beatIndex: 1 }, { lyric: "lộc", chord: null, beatIndex: 1 }, { lyric: "hơn", chord: "2", beatIndex: 2 }] },
-      { tokens: [{ lyric: "tết", chord: null, beatIndex: 2 }, { lyric: "nay", chord: "Em", beatIndex: 1 }, { lyric: "", chord: "2", beatIndex: 2 }] },
-  
-      { tokens: [{ lyric: "tết", chord: "F", beatIndex: 1 }, { lyric: "đến", chord: null, beatIndex: 1 }, { lyric: "đoàn", chord: null, beatIndex: 1 }, { lyric: "tụ", chord: "2", beatIndex: 2 }, { lyric: "cùng", chord: null, beatIndex: 2 }] },
-      { tokens: [{ lyric: "ở", chord: null, beatIndex: 2 }, { lyric: "bên", chord: "C", beatIndex: 1 }, { lyric: "bếp", chord: null, beatIndex: 1 }, { lyric: "hồng", chord: "2", beatIndex: 2 }, { lyric: "và", chord: null, beatIndex: 2 }] },
-      { tokens: [{ lyric: "nồi", chord: null, beatIndex: 2 }, { lyric: "bánh", chord: "F", beatIndex: 1 }, { lyric: "chưng", chord: null, beatIndex: 1 }, { lyric: "xanh", chord: "2", beatIndex: 2 }] },
-      { tokens: [{ lyric: "chờ", chord: null, beatIndex: 2 }, { lyric: "xuân", chord: "F", beatIndex: 1 }, { lyric: "đang", chord: null, beatIndex: 1 }, { lyric: "sang", chord: "2", beatIndex: 2 }] },
-  
-      { section: "VERSE", id: "verse" },
-  
-      { tokens: [{ lyric: "Cánh", chord: "C", beatIndex: 1 }, { lyric: "én", chord: null, beatIndex: 1 }, { lyric: "nơi", chord: "2", beatIndex: 2 }, { lyric: "nơi", chord: null, beatIndex: 2 }, { lyric: "khắp", chord: null, beatIndex: 2 }] },
-      { tokens: [{ lyric: "phố", chord: "G", beatIndex: 1 }, { lyric: "phường", chord: null, beatIndex: 1 }, { lyric: "nhà", chord: "2", beatIndex: 2 }, { lyric: "nhà", chord: null, beatIndex: 2 }] },
-    ],
-  };
-  
+let demoSong = null;
+
+// các biến phụ thuộc bài hát -> để let, set sau khi load JSON
+let meter = null;
+let beatsPerBar = 4;
+let bpm = 80;
+
+let tokenLineIndexes = [];
+let posRef = 0;
+
+// ------------------------ STATE (chung) ------------------------
+let isPlaying = false;
+let phase = "idle";
+let countIn = null;
+
+let beat = 1;
+let activeLine = 0;
+
+let timerId = null;
+
+let phaseRef = "idle";
+let remainingRef = 0;
+let currentBeatRef = 1;
   // ------------------------ METER ------------------------
   function getMeterConfig(song) {
     if (song.timeSigTop === 6 && song.timeSigBottom === 8) {
@@ -153,46 +70,39 @@ const demoSong = {
     osc.stop(now + 0.035);
   }
   
-  // ------------------------ STATE ------------------------
-  const meter = getMeterConfig(demoSong);
-  const beatsPerBar = meter.beatsPerBar;
-  
-  let bpm = demoSong.bpm;
-  let isPlaying = false;
-  let phase = "idle"; // "idle" | "countin" | "play"
-  let countIn = null;
-  
-  let beat = 1; // 1..beatsPerBar
-  let activeLine = 0;
-  
-  let timerId = null;
-  
-  let phaseRef = "idle";
-  let remainingRef = 0;
-  let currentBeatRef = 1;
-  
-  const tokenLineIndexes = demoSong.lines
-    .map((l, i) => (l.tokens ? i : -1))
-    .filter((i) => i !== -1);
-  
-  let posRef = 0;
+ 
   
   // ------------------------ DOM ------------------------
-  const elTitle = document.getElementById("songTitle");
-  const elAuthor = document.getElementById("songAuthor");
-  const elStyle = document.getElementById("songStyle");
-  const elTimeSig = document.getElementById("songTimeSig");
-  const elTempoHint = document.getElementById("songTempoHint");
-  const elBpmNow = document.getElementById("songBpmNow");
-  
-  const elBeatBox = document.getElementById("beatBox");
-  const elSongRoot = document.getElementById("songRoot");
-  
-  const btnPlay = document.getElementById("btnPlay");
-  const btnStop = document.getElementById("btnStop");
-  
-  const bpmRange = document.getElementById("bpmRange");
-  const bpmLabel = document.getElementById("bpmLabel");
+
+  //transpose
+  let transpose = 0;
+
+const NOTE_SHARPS = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"];
+
+function transposeRoot(root, semis) {
+  const idx = NOTE_SHARPS.indexOf(root);
+  if (idx === -1) return root;
+  let newIdx = (idx + semis) % 12;
+  if (newIdx < 0) newIdx += 12;
+  return NOTE_SHARPS[newIdx];
+}
+
+function transposeChord(chord, semis) {
+  if (!chord) return chord;
+
+  const m = chord.match(/^([A-G])([#b]?)(.*)$/);
+  if (!m) return chord;
+
+  const root = m[1] + (m[2] || "");
+  const rest = m[3] || "";
+
+  const newRoot = transposeRoot(root, semis);
+  return newRoot + rest;
+}
+
+function getDisplayChord(chord) {
+  return transposeChord(chord, transpose);
+}
   
   // ------------------------ RENDER HELPERS ------------------------
   function beatClickLevel(b) {
@@ -278,7 +188,7 @@ const demoSong = {
         isPlaying && phase !== "countin" && isCurrentLine && hasChord && t.beatIndex === beat;
   
       if (chordBeatActive) cell.classList.add("cellActive");
-      cell.textContent = hasChord ? t.chord : "\u00A0";
+      cell.textContent = hasChord ? getDisplayChord(t.chord) : "\u00A0";
   
       grid.appendChild(cell);
     });
@@ -449,9 +359,53 @@ const demoSong = {
     clearTimer();
     timerId = window.setInterval(tick, 60000 / bpm);
   }
+//   loadSong(); // load song ngay khi script chạy
+
+async function loadSong() {
+    try {
+      const res = await fetch("./songs.json"); // ✅ path tính từ home.html
+      if (!res.ok) throw new Error(`Fetch songs.json failed: ${res.status}`);
   
+      const allSongs = await res.json();
+      demoSong = allSongs[0]; // lấy bài đầu tiên
+  
+      // ✅ set các biến phụ thuộc demoSong tại đây
+      meter = getMeterConfig(demoSong);
+      beatsPerBar = meter.beatsPerBar;
+  
+      bpm = demoSong.bpm;
+  
+      tokenLineIndexes = demoSong.lines
+        .map((l, i) => (l.tokens ? i : -1))
+        .filter((i) => i !== -1);
+  
+      posRef = 0;
+      activeLine = tokenLineIndexes[0] ?? 0;
+  
+      init(); // ✅ chỉ init sau khi đã có demoSong
+    } catch (err) {
+      console.error(err);
+      alert("Không load được songs.json. Kiểm tra đường dẫn và mở bằng Live Server/GitHub Pages.");
+    }
+  }
   // ------------------------ INIT ------------------------
   function init() {
+    elTitle = document.getElementById("songTitle");
+    elAuthor = document.getElementById("songAuthor");
+    elStyle = document.getElementById("songStyle");
+    elTimeSig = document.getElementById("songTimeSig");
+    elTempoHint = document.getElementById("songTempoHint");
+    elBpmNow = document.getElementById("songBpmNow");
+  
+    elBeatBox = document.getElementById("beatBox");
+    elSongRoot = document.getElementById("songRoot");
+  
+    btnPlay = document.getElementById("btnPlay");
+    btnStop = document.getElementById("btnStop");
+  
+    bpmRange = document.getElementById("bpmRange");
+    bpmLabel = document.getElementById("bpmLabel");
+  
     renderMeta();
     renderBeatChips();
     renderSong();
@@ -466,6 +420,36 @@ const demoSong = {
       elBpmNow.textContent = `⏱ Đang tập: ${bpm} BPM`;
       restartInterval();
     });
+      // --- TRANSPOSE CONTROLS ---
+  const btnUp = document.getElementById("btnUp");
+  const btnDown = document.getElementById("btnDown");
+  const btnReset = document.getElementById("btnReset");
+  const transposeLabel = document.getElementById("transposeLabel");
+
+  function updateTransposeLabel() {
+    if (transposeLabel) transposeLabel.textContent = `🎚 Transpose: ${transpose}`;
+  }
+
+  btnUp?.addEventListener("click", () => {
+    transpose += 1;
+    updateTransposeLabel();
+    renderSong();
+  });
+
+  btnDown?.addEventListener("click", () => {
+    transpose -= 1;
+    updateTransposeLabel();
+    renderSong();
+  });
+
+  btnReset?.addEventListener("click", () => {
+    transpose = 0;
+    updateTransposeLabel();
+    renderSong();
+  });
+
+  updateTransposeLabel();
   }
   
-  document.addEventListener("DOMContentLoaded", init);
+  document.addEventListener("DOMContentLoaded", loadSong);
+  
