@@ -25,7 +25,7 @@
             <a href="#">Khóa học</a>
             <a href="#">Liên hệ</a>
           </nav>
-          <button class="menuBtn" id="menuBtn" aria-label="Open menu">☰</button>
+          <button class="menuBtn" id="menuBtn" aria-label="Open menu"></button>
           <!-- <div class="search-box">
             <input type="text" placeholder="Search artist, album, course..." />
           </div>
@@ -164,10 +164,9 @@
     menuBtn.setAttribute("aria-expanded", "false");
   
     menuBtn.addEventListener("click", () => {
-      const isOpen = mobileNav.classList.toggle("isOpen");
-      menuBtn.textContent = isOpen ? "✕" : "☰";
-      menuBtn.setAttribute("aria-expanded", String(isOpen));
-    });
+  const isOpen = mobileNav.classList.toggle("isOpen");
+  menuBtn.classList.toggle("isOpen", isOpen);
+});
   
     // bấm link thì tự đóng
     mobileNav.addEventListener("click", (e) => {
