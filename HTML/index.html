@@ -1,0 +1,58 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Lufe Audio - Metronome Lyrics Demo</title>
+    <link rel="stylesheet" href="../CSS/Style.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="header">
+        <h1 id="songTitle" class="h1"></h1>
+
+        <div class="metaRow">
+          <span class="metaPill" id="songAuthor"></span>
+          <span class="metaPill" id="songStyle"></span>
+          <span class="metaPill" id="songTimeSig"></span>
+          <span class="metaPill" id="songTempoHint"></span>
+          <span class="metaPill" id="songBpmNow"></span>
+        </div>
+      </header>
+
+      <section class="controls">
+        <div class="row">
+          <button id="btnPlay" class="btn btnPlay">Play</button>
+          <button id="btnStop" class="btn btnStop" disabled>Stop</button>
+
+          <div id="beatBox" class="beatBox"></div>
+        </div>
+
+        <div class="sliderRow">
+          <label class="label">
+            Tempo: <b><span id="bpmLabel">80</span> BPM</b>
+          </label>
+          <input id="bpmRange" class="slider" type="range" min="40" max="220" value="80" />
+          <div class="sliderHint">Tip: tập chậm rồi tăng dần. (Người học chỉ chỉnh tempo, không chỉnh nhịp)</div>
+        </div>
+      </section>
+
+      <section class="songBox">
+        <div id="songRoot"></div>
+      </section>
+
+      <section class="notes">
+        <div class="noteTitle">Gợi ý nâng cấp sau:</div>
+        <ul class="ul">
+          <li>Subdivision: 1-&amp;-2-&amp; (simple) / 1-la-li (6/8) để người mới dễ vào</li>
+          <li>Auto-scroll theo dòng đang tập</li>
+          <li>Audio hợp âm (block chord) + điệu rải</li>
+          <li>Mỗi dòng có nhiều bars (không chỉ 1 bar)</li>
+        </ul>
+      </section>
+    </main>
+
+    <script defer src="../JS/app.js"></script>
+  </body>
+</html>

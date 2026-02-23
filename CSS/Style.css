@@ -1,0 +1,235 @@
+/* styles.css */
+:root {
+    --accent: rgba(34, 234, 121, 0.85);
+    --ink: rgba(0, 0, 0, 0.88);
+    --border: rgba(0, 0, 0, 0.12);
+    --muted: rgba(0, 0, 0, 0.06);
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    color: var(--ink);
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+      "Apple Color Emoji", "Segoe UI Emoji";
+  }
+  
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px 64px;
+  }
+  
+  .header {
+    margin-bottom: 16px;
+  }
+  
+  .h1 {
+    margin: 0;
+    font-size: 28px;
+    line-height: 1.2;
+  }
+  
+  .metaRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+    margin-bottom: 6px;
+  }
+  
+  .metaPill {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(0, 0, 0, 0.03);
+    font-size: 13px;
+    opacity: 0.95;
+  }
+  
+  .controls {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .btn {
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    border-radius: 12px;
+    padding: 10px 14px;
+    cursor: pointer;
+    font-weight: 800;
+    background: white;
+  }
+  
+  .btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+  }
+  
+  .btnPlay {
+    background: var(--accent);
+  }
+  
+  .btnStop {
+    background: var(--muted);
+  }
+  
+  .beatBox {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  
+  .beatChip {
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    opacity: 0.95;
+    user-select: none;
+  }
+  
+  .beatChip.active {
+    font-weight: 900;
+    opacity: 1;
+  }
+  
+  .sliderRow {
+    margin-top: 14px;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  .slider {
+    width: 100%;
+  }
+  
+  .sliderHint {
+    margin-top: 6px;
+    opacity: 0.9;
+    font-size: 13px;
+  }
+  
+  /* Song box */
+  .songBox {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 16px;
+  }
+  
+  /* Section heading */
+  .sectionWrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 18px 0 10px 0;
+    width: 100%;
+  }
+  
+  .sectionTitle {
+    font-weight: 900;
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: var(--accent);
+    border-left: 4px solid var(--accent);
+    padding-left: 10px;
+  }
+  
+  .sectionCountIn {
+    /* font-size: 16px; */
+    font-weight: 900;
+    color: var(--accent);
+    min-width: 40px;
+    background: rgba(178, 178, 178, 0.1);
+    border-radius: 50px;
+    /* border: 1px solid var(--accent); */
+    text-align: center;
+    /* padding: 4px 10px; */
+  }
+  
+  /* Groups: 3 lines per row (like your React version) */
+  .groupRow {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+  }
+  
+  /* ✅ Grid line (2 rows: chords + lyrics) */
+  .lineGrid {
+    display: grid;
+    gap: 0;
+    row-gap: 1px;
+    margin-bottom: 2px;
+    align-items: center;
+  }
+  
+  /* Cells */
+  .gridCell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 28px;
+    padding: 2px 2px;
+    user-select: none;
+  }
+  
+  .chordCell {
+    font-weight: 900;
+    font-size: 12px;
+    line-height: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  
+  .lyricCell {
+    font-size: 12px;
+    line-height: 18px;
+    opacity: 0.95;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  
+  /* Highlight only on chord cell */
+  .cellActive {
+    border: 1px solid var(--accent);
+    border-radius: 12px;
+    transform: translateY(-1px);
+  }
+  
+  /* Notes */
+  .notes {
+    margin-top: 16px;
+    border: 1px dashed rgba(0, 0, 0, 0.18);
+    border-radius: 16px;
+    padding: 16px;
+    opacity: 0.95;
+  }
+  
+  .noteTitle {
+    font-weight: 900;
+    margin-bottom: 8px;
+  }
+  
+  .ul {
+    margin: 0;
+    padding-left: 18px;
+  }
