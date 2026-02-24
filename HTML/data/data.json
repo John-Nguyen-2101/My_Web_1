@@ -1,0 +1,63 @@
+{
+  "social": [
+    { "name": "Facebook", "icon": "fa-brands fa-facebook", "link": "https://www.facebook.com/guitaristVN/" },
+    { "name": "TikTok", "icon": "fa-brands fa-tiktok", "link": "https://www.tiktok.com/@jblufe.studio" },
+    { "name": "YouTube", "icon": "fa-brands fa-youtube", "link": "https://www.youtube.com/@lufeaudio1526" },
+    { "name": "Instagram", "icon": "fa-brands fa-instagram", "link": "https://www.instagram.com/jb_lufe.audio/" }
+  ],
+  "donate": {
+    "bankName": "Vietcombank (Mock)",
+    "bankOwner": "JOHN THANH LỊCH",
+    "bankNumber": "0123 456 789"
+  },
+  "tools": [
+    {
+      "title": "Tra cứu hợp âm + Metronome",
+      "desc": "Tìm hợp âm theo bài + chạy metronome, phù hợp để tập nhịp khi đệm hát.",
+      "status": "Live/Update",
+      "link": "#"
+    },
+    {
+      "title": "Luyện nghe hợp âm",
+      "desc": "Bài tập nhận diện quality: maj/min/dim/aug/7... (sắp có).",
+      "status": "Coming soon",
+      "link": ""
+    },
+    {
+      "title": "Mixing & Master",
+      "desc": "Tổng hợp bài học + checklist + bài tập thực hành (sắp có).",
+      "status": "Coming soon",
+      "link": ""
+    }
+  ],
+  "albums": [
+    {
+      "title": "Bài nổi bật #1",
+      "desc": "Mô tả ngắn (anh thay bằng bài thật).",
+      "chip": "Single",
+      "link": "#"
+    },
+    {
+      "title": "Bài nổi bật #2",
+      "desc": "Mô tả ngắn (anh thay bằng bài thật).",
+      "chip": "Single",
+      "link": ""
+    },
+    {
+      "title": "EP / Playlist",
+      "desc": "Mô tả ngắn (anh thay bằng album/EP thật).",
+      "chip": "EP",
+      "link": ""
+    }
+  ],
+  "products": [
+    { "title": "Guitar Pick Set", "desc": "Mock sản phẩm affiliate sau này.", "chip": "Affiliate", "link": "" },
+    { "title": "Audio Interface", "desc": "Mock sản phẩm affiliate sau này.", "chip": "Gear", "link": "" },
+    { "title": "Course Bundle", "desc": "Mock khóa học/ebook sau này.", "chip": "Digital", "link": "" }
+  ],
+  "posts": [
+    { "title": "Passing chord là gì?", "desc": "Giải thích dễ hiểu + ví dụ thực tế.", "chip": "Harmony", "link": "" },
+    { "title": "Cách đệm hát không bị lạc tone", "desc": "Checklist tai nghe + hợp âm + nhịp.", "chip": "Guitar", "link": "" },
+    { "title": "Attack/Decay/Sustain/Release", "desc": "Hiểu ADSR để mix nhạc tốt hơn.", "chip": "Mixing", "link": "" }
+  ]
+}

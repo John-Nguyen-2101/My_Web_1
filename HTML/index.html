@@ -1,190 +1,219 @@
-<!-- index.html -->
 <!doctype html>
 <html lang="vi">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Lufe Audio - Metronome Lyrics Demo</title>
-    <link rel="stylesheet" href="../CSS/Main.css">
-    <link rel="stylesheet" href="../CSS/Style.css" />
-    
+    <title>Lufe Audio - Landing</title>
+
+    <link rel="stylesheet" href="../CSS/Main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   </head>
+
   <body>
-    <header class="header1">
+    <!-- Header -->
+    <header class="site-header">
       <div class="container header-inner">
-        <div style="display:flex; align-items:center;">
-          <a href="#" class="logo">Lufe Audio</a>
-          
-        </div>
-  
-        <div class="header-right">
-          <nav class="nav-links">
-            <a href="#">Trang Chủ</a>
-            <a href="../HTML/index.html" class="active">Hợp âm</a>
-            <a href="#">Dịch vụ</a>
+        <a class="logo" href="#">Lufe Audio</a>
+
+        <nav class="nav">
+          <a href="#" class="btn btn-small">Trang Chủ</a>
+          <a href="../HTML/chord.html" >Hợp âm</a>
+          <a href="#">Dịch vụ</a>
             <a href="#">Khóa học</a>
             <a href="#">Liên hệ</a>
-          </nav>
-          <button class="menuBtn" id="menuBtn" aria-label="Open menu"></button>
-          <!-- <div class="search-box">
-            <input type="text" placeholder="Search artist, album, course..." />
-          </div>
-          <a href="#" class="btn btn-login">Log in</a>
-          <a href="#" class="btn btn-signup">Sign up</a> -->
-        </div>
+          <!-- <a href="#donate" >Donate</a> -->
+        </nav>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Mở menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <div class="mobile-nav" id="mobileNav">
+        <a href="#">Trang Chủ</a>
+        <a href="../HTML/chord.html" >Hợp âm</a>
+        <a href="#">Dịch vụ</a>
+          <a href="#">Khóa học</a>
+          <a href="#">Liên hệ</a>
       </div>
     </header>
-    <div class="mobileNav" id="mobileNav">
-      <div class="mobileNavInner">
-        <a href="#">Trang Chủ</a>
-        <a href="../HTML/index.html" class="active">Hợp âm</a>
-        <a href="#">Dịch vụ</a>
-        <a href="#">Khóa học</a>
-        <a href="#">Liên hệ</a>
-      </div>
-    </div>
-    <main class="page">
-      <header >
-        
-        <h1 id="songTitle" class="h1"></h1>
 
-        <div class="metaRow">
-          <span class="metaPill" id="songAuthor"></span>
-          <span class="metaPill" id="songStyle"></span>
-          <span class="metaPill" id="songTimeSig"></span>
-          <span class="metaPill" id="songTempoHint"></span>
-          <span class="metaPill" id="songBpmNow"></span>
-        </div>
-      </header>
+    <!-- Main -->
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-left">
+            <p class="badge">Music • Guitar • Education</p>
+            <h1 class="hero-title">
+              Xin chào, mình là <span class="accent">John Thanh Lịch</span> (Jb Lufe)
+            </h1>
+            <p class="hero-subtitle">
+              Mình làm nhạc và xây tool giúp mọi người học nhạc dễ hơn: tra cứu hợp âm + metronome,
+              luyện tai nghe, mixing/master, piano... (đang update dần).
+            </p>
 
-      <section class="controls">
-        <div class="row">
-          <button id="btnPlay" class="btn btnPlay">Play</button>
-          <button id="btnStop" class="btn btnStop" disabled>Stop</button>
+            <div class="hero-cta">
+              <a class="btn" href="#tools">Xem tools</a>
+              <a class="btn btn-ghost" href="#">Nghe bài nổi bật</a>
+            </div>
 
-          <div id="beatBox" class="beatBox"></div>
-        </div>
-        <div class="row toneRow">
-            <button id="btnDown" class="btn1">-</button>
-            <span class="btn1" id="transposeLabel">Transpose: 0</span>
-            <button id="btnUp" class="btn1">+</button>
-            <button id="btnReset" class="btn1">Reset</button>
+           
           </div>
-        <div class="sliderRow">
-          <label class="label">
-            Tempo: <b><span id="bpmLabel">80</span> BPM</b>
-          </label>
-          <input id="bpmRange" class="slider" type="range" min="40" max="220" value="80" />
-          <div class="sliderHint">Tip: tập chậm rồi tăng dần. </div>
-        </div>
-      </section>
-      
-      <section class="songBox">
-        <div id="songRoot"></div>
-      </section>
-      <section class="heroVideo">
-        <div class="videoContainer">
-          <iframe class="video"
-            id="mainVideo"
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/FgIijOdivPk?si=d8FTxn3fEj0UL94J=0" 
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
-        </div>
-      
-        
-      </section>
-      <!-- <section class="notes">
-        <div class="noteTitle">Gợi ý nâng cấp sau:</div>
-        <ul class="ul">
-          <li>Subdivision: 1-&amp;-2-&amp; (simple) / 1-la-li (6/8) để người mới dễ vào</li>
-          <li>Auto-scroll theo dòng đang tập</li>
-          <li>Audio hợp âm (block chord) + điệu rải</li>
-          <li>Mỗi dòng có nhiều bars (không chỉ 1 bar)</li>
-        </ul>
-      </section> -->
 
+          <div class="hero-right">
+            <div class="hero-card">
+              <div class="hero-card-top">
+                <div class="avatar" aria-hidden="true"><img class="profile-img" src="../IMG/Picture1.jpg" alt="a1"> J</div>
+                <div>
+                  <div class="hero-card-name"><p >John Thanh Lich • Lufe Audio</p></div>
+                  <p class="hero-card-mini">Creator / Music Producer</p>
+                </div>
+              </div>
+
+              <div class="stat-grid">
+                <!-- <div class="stat" id="stat1">
+                  <a href="#" class="stat-num" id="statTools"><i class="fa-brands fa-facebook"></i></a>
+                  <a href="#" class="stat-label">Facebook</a>
+                </div>
+                <div class="stat" id="stat2">
+                  <a href="#" class="stat-num" id="statAlbums"><i class="fa-brands fa-tiktok"></i></a>
+                  <a href="#" class="stat-label">TikTok</a>
+                </div>
+                <div class="stat" id="stat3">
+                  <a href="#" class="stat-num" id="statPosts"><i class="fa-brands fa-youtube"></i></a>
+                  <a href="#" class="stat-label">YouTube</a>
+                </div> -->
+                <span class="social-label">Kết nối:</span>
+                  <div class="social-icons" id="socialIcons">
+                    <!-- JS sẽ render icon từ data.json -->
+                  </div>
+              </div>
+
+              <div class="hero-note">
+                <p>
+                  Mục tiêu: biến học nhạc thành “có hướng dẫn + có tool + có bài tập” thay vì mò mẫm.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOOLS -->
+      <section class="section" id="tools">
+        <div class="container">
+          <div class="section-head">
+            <h2>Tools anh đang cung cấp</h2>
+            <p class="muted">Các công cụ giúp học nhạc dễ hơn, có hướng dẫn + bài tập.</p>
+          </div>
+
+          <div class="card-grid" id="toolsGrid">
+            <!-- JS render -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ALBUMS -->
+      <section class="section alt" id="albums">
+        <div class="container">
+          <div class="section-head">
+            <h2>Album âm nhạc của tôi</h2>
+            <p class="muted">Chọn vài bài nổi bật đã phát hành để giới thiệu.</p>
+          </div>
+
+          <div class="card-grid" id="albumsGrid">
+            <!-- JS render -->
+          </div>
+        </div>
+      </section>
+
+      <!-- PRODUCTS -->
+      <section class="section" id="products">
+        <div class="container">
+          <div class="section-head">
+            <h2>Sản phẩm</h2>
+            <p class="muted">
+              Nơi sau này anh gắn affiliate + sản phẩm anh muốn bán. Hiện làm mock.
+            </p>
+          </div>
+
+          <div class="card-grid" id="productsGrid">
+            <!-- JS render -->
+          </div>
+        </div>
+      </section>
+
+      <!-- POSTS -->
+      <section class="section alt" id="posts">
+        <div class="container">
+          <div class="section-head">
+            <h2>Bài viết (Blog)</h2>
+            <p class="muted">Chia sẻ kiến thức nhạc lý, hòa âm, sản xuất âm nhạc.</p>
+          </div>
+
+          <div class="card-grid" id="postsGrid">
+            <!-- JS render -->
+          </div>
+        </div>
+      </section>
+
+      <!-- DONATE -->
+      <section class="section" id="donate">
+        <div class="container">
+          <div class="donate">
+            <div class="donate-left">
+              <h2>Ủng hộ (Donate)</h2>
+              <p class="muted">
+                Nếu tool & bài viết hữu ích, anh em có thể ủng hộ để anh duy trì dự án.
+                (Thông tin hiện mock, anh thay sau.)
+              </p>
+
+              <div class="donate-box">
+                <div class="donate-row">
+                  <span class="donate-label">Ngân hàng:</span>
+                  <span class="donate-value" id="bankName">—</span>
+                </div>
+                <div class="donate-row">
+                  <span class="donate-label">Chủ tài khoản:</span>
+                  <span class="donate-value" id="bankOwner">—</span>
+                </div>
+                <div class="donate-row">
+                  <span class="donate-label">Số tài khoản:</span>
+                  <span class="donate-value" id="bankNumber">—</span>
+                </div>
+
+                <button class="btn btn-ghost" id="copyBank">
+                  Copy thông tin
+                </button>
+                <p class="hint" id="copyHint"></p>
+              </div>
+            </div>
+
+            <div class="donate-right">
+              <div class="qr-mock">
+                <p class="qr-title">QR (Mock)</p>
+                <div class="qr-square" aria-hidden="true"></div>
+                <p class="muted small">Sau này anh thay QR thật.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
-     <!-- FOOTER -->
-  <footer>
-    <div class="footer-grid">
 
-      <div class="footer-column">
-        <h3>Lufe Audio</h3>
-        <p style="font-size:14px; color:#9ca3af;">
-          Cung cấp các sản phẩm, dịch vụ và công cụ học nhạc.
-        </p>
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© <span id="year"></span> Lufe Audio. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="#tools">Tools</a>
+          <a href="#posts">Blog</a>
+          <a href="#donate">Donate</a>
+        </div>
       </div>
+    </footer>
 
-      <div class="footer-column">
-        <h3>Services</h3>
-        <a href="#">Mixing & Mastering</a>
-        <a href="#">Đặt làm nhạc</a>
-        <a href="#">Thu âm</a>
-        <a href="#">Khóa học</a>
-      </div>
-
-      <div class="footer-column">
-        <h3>Company</h3>
-        <a href="#">Về chúng tôi</a>
-        <!-- <a href="#">Careers</a> -->
-        <!-- <a href="#">Blog</a> -->
-        <a href="#">Contact</a>
-      </div>
-
-      <div class="footer-column">
-        <h3>Follow Us</h3>
-        <a href="#">YouTube</a>
-        <a href="#">Instagram</a>
-        <a href="#">TikTok</a>
-        <a href="#">Facebook</a>
-      </div>
-
-    </div>
-
-    <div class="footer-bottom">
-      © 2026 Lufe Audio. All rights reserved.
-    </div>
-  </footer>
-
-  <script>
-    const menuBtn = document.getElementById("menuBtn");
-    const mobileNav = document.getElementById("mobileNav");
-  
-    function closeMenu() {
-      mobileNav.classList.remove("isOpen");
-      menuBtn.textContent = "☰";
-      menuBtn.setAttribute("aria-expanded", "false");
-    }
-  
-    menuBtn.setAttribute("aria-expanded", "false");
-  
-    menuBtn.addEventListener("click", () => {
-  const isOpen = mobileNav.classList.toggle("isOpen");
-  menuBtn.classList.toggle("isOpen", isOpen);
-});
-  
-    // bấm link thì tự đóng
-    mobileNav.addEventListener("click", (e) => {
-      if (e.target.tagName === "A") closeMenu();
-    });
-  
-    // click ra ngoài thì đóng
-    document.addEventListener("click", (e) => {
-      if (!mobileNav.classList.contains("isOpen")) return;
-      const clickedInside = mobileNav.contains(e.target) || menuBtn.contains(e.target);
-      if (!clickedInside) closeMenu();
-    });
-  
-    // nhấn ESC đóng
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeMenu();
-    });
-  </script>
-    <script defer src="../JS/app.js"></script>
+    <script src="../JS/main.js"></script>
   </body>
 </html>

@@ -363,7 +363,7 @@ function getDisplayChord(chord) {
 
 async function loadSong() {
     try {
-      const res = await fetch("./songs.json"); // ✅ path tính từ home.html
+      const res = await fetch("..//HTML/data/songs.json"); // ✅ path tính từ home.html
       if (!res.ok) throw new Error(`Fetch songs.json failed: ${res.status}`);
   
       const allSongs = await res.json();
