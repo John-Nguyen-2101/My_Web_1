@@ -21,43 +21,43 @@
       "title": "Luyện nghe hợp âm",
       "desc": "Bài tập nhận diện quality: maj/min/dim/aug/7... (sắp có).",
       "status": "Coming soon",
-      "link": ""
+      "link": "#"
     },
     {
       "title": "Mixing & Master",
       "desc": "Tổng hợp bài học + checklist + bài tập thực hành (sắp có).",
       "status": "Coming soon",
-      "link": ""
+      "link": "#"
     }
   ],
   "albums": [
     {
       "title": "Bài nổi bật #1",
-      "desc": "Mô tả ngắn (anh thay bằng bài thật).",
+      "desc": "Mô tả 1.",
       "chip": "Single",
       "link": "#"
     },
     {
       "title": "Bài nổi bật #2",
-      "desc": "Mô tả ngắn (anh thay bằng bài thật).",
+      "desc": "Mô tả 2.",
       "chip": "Single",
-      "link": ""
+      "link": "#"
     },
     {
       "title": "EP / Playlist",
-      "desc": "Mô tả ngắn (anh thay bằng album/EP thật).",
+      "desc": "Mô tả 3.",
       "chip": "EP",
-      "link": ""
+      "link": "#"
     }
   ],
   "products": [
-    { "title": "Guitar Pick Set", "desc": "Mock sản phẩm affiliate sau này.", "chip": "Affiliate", "link": "" },
-    { "title": "Audio Interface", "desc": "Mock sản phẩm affiliate sau này.", "chip": "Gear", "link": "" },
-    { "title": "Course Bundle", "desc": "Mock khóa học/ebook sau này.", "chip": "Digital", "link": "" }
+    { "title": "Guitar Pick Set", "desc": "Mock sản phẩm affiliate sau này.", "chip": "Affiliate", "link": "#" },
+    { "title": "Audio Interface", "desc": "Mock sản phẩm affiliate sau này.", "chip": "Gear", "link": "#" },
+    { "title": "Course Bundle", "desc": "Mock khóa học/ebook sau này.", "chip": "Digital", "link": "#" }
   ],
   "posts": [
-    { "title": "Passing chord là gì?", "desc": "Giải thích dễ hiểu + ví dụ thực tế.", "chip": "Harmony", "link": "" },
-    { "title": "Cách đệm hát không bị lạc tone", "desc": "Checklist tai nghe + hợp âm + nhịp.", "chip": "Guitar", "link": "" },
-    { "title": "Attack/Decay/Sustain/Release", "desc": "Hiểu ADSR để mix nhạc tốt hơn.", "chip": "Mixing", "link": "" }
+    { "title": "Passing chord là gì?", "desc": "Giải thích dễ hiểu + ví dụ thực tế.", "chip": "Harmony", "link": "#" },
+    { "title": "Cách đệm hát không bị lạc tone", "desc": "Checklist tai nghe + hợp âm + nhịp.", "chip": "Guitar", "link": "#" },
+    { "title": "Attack/Decay/Sustain/Release", "desc": "Hiểu ADSR để mix nhạc tốt hơn.", "chip": "Mixing", "link": "#" }
   ]
 }

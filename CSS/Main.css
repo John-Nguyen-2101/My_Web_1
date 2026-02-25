@@ -28,7 +28,9 @@
     width:min(var(--container), calc(100% - 40px));
     margin:0 auto;
   }
-  
+  .fa{
+    font-size: larger;
+  }
   .btn{
     display:inline-flex;
     align-items:center;
@@ -365,6 +367,11 @@ box-shadow: 0 10px 22px rgba(0,0,0,.25);
 background: #1877F2;
 border-color: rgba(255,255,255,.18);
 }
+.fa1:hover{
+ color: #1877F2;
+ /* background: #1877F2; */
+ border-color: rgba(255,255,255,.18);
+  }
 .icon-btn.facebook i{ color: #fff; }
 
 /* ===== TikTok: nền đen + icon trắng, viền/halo đỏ-xanh kiểu TikTok ===== */
@@ -372,6 +379,11 @@ border-color: rgba(255,255,255,.18);
 background: #0b0b0b;
 border-color: rgba(255,255,255,.14);
 }
+.fa2:hover{
+ color: #bf4040;
+ /* background: #1877F2; */
+ border-color: rgba(255,255,255,.18);
+  }
 .icon-btn.tiktok i{ color:#fff; }
 /* tạo cảm giác “đỏ + xanh” quanh nút */
 .icon-btn.tiktok:hover{
@@ -386,6 +398,11 @@ box-shadow:
 background: #FF0000;
 border-color: rgba(255,255,255,.18);
 }
+.fa4:hover{
+ color: #FF0000;
+ /* background: #1877F2; */
+ border-color: rgba(255,255,255,.18);
+  }
 .icon-btn.youtube i{ color:#fff; }
 
 /* ===== Instagram: gradient hồng-đỏ-cam + trắng ===== */
@@ -393,6 +410,11 @@ border-color: rgba(255,255,255,.18);
 background: linear-gradient(135deg,#f58529,#dd2a7b,#8134af,#515bd4);
 border-color: rgba(255,255,255,.18);
 }
+.fa3:hover{
+ color: #d431cf;
+ /* background: #1877F2; */
+ border-color: rgba(255,255,255,.18);
+  }
 .icon-btn.instagram i{ color:#fff; }
 
 /* Donate */
