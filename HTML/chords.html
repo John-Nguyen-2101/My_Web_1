@@ -1,0 +1,207 @@
+
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Lufe Audio - Landing</title>
+
+    <link rel="stylesheet" href="../CSS/Main.css" />
+    <link rel="stylesheet" href="../CSS/chords.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="logo" href="#">Lufe Audio</a>
+
+        <nav class="nav">
+          <a href="../HTML/index.html" >Trang Chủ</a>
+          <a href="../HTML/chords.html" class="btn btn-small">Hợp âm</a>
+          <a href="#">Dịch vụ</a>
+            <a href="#">Khóa học</a>
+            <a href="#">Liên hệ</a>
+          <!-- <a href="#donate" >Donate</a> -->
+        </nav>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Mở menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <div class="mobile-nav" id="mobileNav">
+        <a href="../HTML/index.html">Trang Chủ</a>
+        <a href="../HTML/chords.html" >Hợp âm</a>
+        <a href="#">Dịch vụ</a>
+          <a href="#">Khóa học</a>
+          <a href="#">Liên hệ</a>
+      </div>
+    </header>
+ 
+
+    <main class="page chordsMain">
+        <div class="container chordsLayout">
+          <!-- LEFT SIDE -->
+          <aside class="leftPanel">
+            <!-- Search -->
+            <section class="panelCard">
+              <h2 class="panelTitle">Tìm bài hát</h2>
+              <div class="searchRow">
+                <input id="songSearch" class="input" type="text" placeholder="Nhập tên bài hát..." />
+                <button id="btnSearch" class="btn btn-small">Tìm</button>
+              </div>
+              <div class="muted small">Tip: gõ tên bài / ca sĩ / keyword.</div>
+            </section>
+      
+            <!-- Song list -->
+            <section class="panelCard">
+              <div class="panelHead">
+                <h2 class="panelTitle">Danh sách bài hát</h2>
+                <span class="muted small" id="songCount">0 bài</span>
+              </div>
+      
+              <div id="songsList" class="list">
+                <!-- JS render songs -->
+                <!-- item mẫu:
+                <button class="listItem is-active">
+                  <div class="listItemTitle">Tên bài</div>
+                  <div class="listItemMeta muted small">Tác giả • 80 BPM • 4/4</div>
+                </button>
+                -->
+              </div>
+            </section>
+      
+            <!-- Tools list -->
+            <section class="panelCard">
+              <div class="panelHead">
+                <h2 class="panelTitle">Công cụ</h2>
+                <span class="muted small">Tools anh build</span>
+              </div>
+      
+              <div id="toolsList" class="toolGrid">
+                <!-- JS render tools -->
+                <!-- card mẫu:
+                <a class="toolCard" href="#">
+                  <div class="toolTitle">Tra cứu hợp âm + Metronome</div>
+                  <div class="toolDesc muted small">Tìm hợp âm theo bài + chạy metronome...</div>
+                  <div class="toolChip">Live</div>
+                </a>
+                -->
+              </div>
+            </section>
+          </aside>
+      
+          <!-- RIGHT SIDE -->
+          <section class="rightPanel">
+            <!-- Albums -->
+            <section class="panelCard">
+              <div class="panelHead">
+                <h2 class="panelTitle">Album âm nhạc</h2>
+                <a class="muted small" href="#" id="albumsSeeAll">See All</a>
+              </div>
+      
+              <div id="albumsGrid" class="albumGrid">
+                <!-- JS render albums -->
+              </div>
+            </section>
+      
+            <!-- Need helps + Chatbox -->
+            <section class="needHelpRow">
+              <!-- FAQs -->
+              <section class="panelCard">
+                <div class="panelHead">
+                  <h2 class="panelTitle">Need helps</h2>
+                  <span class="muted small">Câu hỏi thường gặp</span>
+                </div>
+      
+                <div class="faqList" id="faqList">
+                  <!-- mẫu -->
+                  <details class="faqItem">
+                    <summary>Vì sao bấm Play mà không nghe click?</summary>
+                    <div class="faqBody muted small">
+                      Trình duyệt cần thao tác người dùng để mở AudioContext. Hãy bấm Play lần nữa hoặc kiểm tra volume.
+                    </div>
+                  </details>
+      
+                  <details class="faqItem">
+                    <summary>Làm sao đổi tone (transpose)?</summary>
+                    <div class="faqBody muted small">
+                      Dùng nút + / - ở khu vực điều khiển để nâng/hạ nửa cung.
+                    </div>
+                  </details>
+      
+                  <details class="faqItem">
+                    <summary>Auto-scroll chạy theo tempo là gì?</summary>
+                    <div class="faqBody muted small">
+                      Khi metronome chạy tới dòng nào, trang sẽ cuộn tới dòng đó để anh em tập không bị lạc.
+                    </div>
+                  </details>
+                </div>
+              </section>
+      
+              <!-- Chatbox placeholder -->
+              <section class="panelCard chatCard">
+                <div class="panelHead">
+                  <h2 class="panelTitle">Chat box</h2>
+                  <span class="muted small">Chỗ để gắn chatbot sau</span>
+                </div>
+      
+                <div class="chatBox" id="chatBox">
+                  <div class="chatMessages muted small" id="chatMessages">
+                    (Placeholder) Ở đây sẽ hiển thị tin nhắn chat…
+                  </div>
+      
+                  <div class="chatComposer">
+                    <input class="input" type="text" placeholder="Nhập câu hỏi..." disabled />
+                    <button class="btn btn-small" disabled>Gửi</button>
+                  </div>
+                </div>
+              </section>
+            </section>
+      
+          
+        </div>
+          <!-- Bottom: YouTube iframes -->
+          <section class="panelCard panelvideoyt">
+            <div class="panelHead">
+              <h2 class="panelTitle">Video từ kênh YouTube</h2>
+              <span class="muted small">Iframe tạm để link trống</span>
+            </div>
+    
+            <div class="videoGrid">
+              <div class="videoFrame">
+                <iframe class="video" src="" title="YouTube video 1" allowfullscreen></iframe>
+              </div>
+              <div class="videoFrame">
+                <iframe class="video" src="" title="YouTube video 2" allowfullscreen></iframe>
+              </div>
+              <div class="videoFrame">
+                <iframe class="video" src="" title="YouTube video 3" allowfullscreen></iframe>
+              </div>
+            </div>
+          </section>
+        </section>
+      </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© Copyright by Lufe Audio</p><span id="year"></span>
+        <div class="footer-links">
+          <!-- <span>Theo dõi mình tại đây :</span> -->
+          <a href="https://www.facebook.com/guitaristVN/"><i class="fa fa1 fa-brands fa-facebook"></i></a>
+          <a href="https://www.tiktok.com/@jblufe.studio"><i class="fa fa2 fa-brands fa-tiktok"></i></a>
+          <a href="https://www.instagram.com/jb_lufe.audio/"><i class="fa fa3 fa-brands fa-instagram"></i></a>
+          <a href="https://www.youtube.com/@lufeaudio1526"><i class="fa fa4 fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+    </footer>
+
+    <button id="scrollTopBtn" class="scrollTopBtn">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+    <script src="../JS/chords.js"></script>
+  </body>
+</html>

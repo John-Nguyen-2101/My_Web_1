@@ -32,22 +32,28 @@
   ],
   "albums": [
     {
-      "title": "Bài nổi bật #1",
-      "desc": "Mô tả 1.",
+      "type": "album",
+      "title": "Ước mơ tuổi 17 ",
+      "desc": "Release 27/09/2025. Jb-Lufe",
       "chip": "Single",
-      "link": "#"
+      "link": "#",
+      "cover":"../IMG/album2.jpg"
     },
     {
-      "title": "Bài nổi bật #2",
-      "desc": "Mô tả 2.",
+      "type": "album",
+      "title": "Đã đủ rồi",
+      "desc": "Release 5/03/2025. Jb-Lufe feat. Fei Nguyen",
       "chip": "Single",
-      "link": "#"
+      "link": "#",
+      "cover":"../IMG/album1.jpg"
     },
     {
-      "title": "EP / Playlist",
-      "desc": "Mô tả 3.",
-      "chip": "EP",
-      "link": "#"
+      "type": "album",
+      "title": "Tương tư",
+      "desc": "Coming soon 2026. Jb-Lufe feat. Fei Nguyen, Quynh Trang",
+      "chip": "Single",
+      "link": "#",
+      "cover":"../IMG/album3.jpeg"
     }
   ],
   "products": [

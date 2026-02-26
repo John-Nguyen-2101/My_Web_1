@@ -47,23 +47,29 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
         return;
       }
-  
       el.innerHTML = list
-        .map((item) => {
-          const title = escapeHTML(item.title);
-          const desc = escapeHTML(item.desc);
-          const chip = escapeHTML(item.chip || item.status || "Update");
-          const link = safeLink(item.link);
-          const primaryText = options.primaryText || "Xem";
-          const secondaryText = options.secondaryText || "Chi tiết";
-  
-          // nếu link rỗng -> disable style nhẹ (vẫn để # cho khỏi lỗi)
-          const isEmpty = !item.link || !item.link.trim();
-          const linkAttr = isEmpty ? `href="#" aria-disabled="true"` : `href="${link}"`;
-          const linkClass = isEmpty ? "link is-disabled" : "link";
-  
+      .map((item) => {
+        const title = escapeHTML(item.title);
+        const desc = escapeHTML(item.desc);
+        const chip = escapeHTML(item.chip || item.status || "Update");
+        const link = safeLink(item.link);
+    
+        const primaryText = options.primaryText || "Xem";
+    
+        const isEmpty = !item.link || !item.link.trim();
+        const linkAttr = isEmpty ? `href="#" aria-disabled="true"` : `href="${link}"`;
+        const linkClass = isEmpty ? "link is-disabled" : "link";
+    
+        // album cover
+        const cover = safeLink(item.cover || item.image || "");
+        const coverHtml = cover
+          ? `<div class="card-media"><img src="${cover}" alt="${title} cover" loading="lazy"></div>`
+          : "";
+    
+        if (item.type === "album") {
           return `
             <div class="card">
+              ${coverHtml}
               <div class="card-top">
                 <p class="card-title">${title}</p>
                 <span class="chip">${chip}</span>
@@ -76,10 +82,26 @@ document.addEventListener("DOMContentLoaded", () => {
               </div>
             </div>
           `;
-        })
-        .join("");
+        }
+    
+        // default card (không có ảnh)
+        return `
+          <div class="card">
+            <div class="card-top">
+              <p class="card-title">${title}</p>
+              <span class="chip">${chip}</span>
+            </div>
+            <p class="card-desc">${desc}</p>
+            <div class="card-actions">
+              <a class="${linkClass}" ${linkAttr}>
+                ${primaryText} <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        `;
+      })
+      .join("");
     }
-  
     function renderSocial(socialList) {
         const wrap = document.getElementById("socialIcons");
         if (!wrap) return;

@@ -168,7 +168,23 @@ function getDisplayChord(chord) {
   
     return wrap;
   }
-  
+  let lastScrolledLine = -1;
+
+    function autoScrollToActiveLine() {
+      if (!isPlaying) return;
+      if (activeLine === lastScrolledLine) return;
+
+      const target = elSongRoot.querySelector(`[data-line-idx="${activeLine}"]`);
+      if (!target) return;
+
+      lastScrolledLine = activeLine;
+
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "nearest",
+      });
+    }
   function makeLineGridNode(tokens, lineIdx) {
     const grid = document.createElement("div");
     grid.className = "lineGrid";
@@ -217,10 +233,18 @@ function getDisplayChord(chord) {
         if (buffer.length > 0) {
           const groupRow = document.createElement("div");
           groupRow.className = "groupRow";
-  
-          buffer.forEach((b) => groupRow.appendChild(makeLineGridNode(b.tokens, b.__lineIdx)));
+      
+          buffer.forEach((b) => {
+            const lineWrap = document.createElement("div");
+            lineWrap.className = "lineWrap";
+            lineWrap.dataset.lineIdx = String(b.__lineIdx);
+      
+            lineWrap.appendChild(makeLineGridNode(b.tokens, b.__lineIdx));
+            groupRow.appendChild(lineWrap);
+          });
+      
           elSongRoot.appendChild(groupRow);
-  
+      
           buffer = [];
           groupCount++;
         }
@@ -235,7 +259,14 @@ function getDisplayChord(chord) {
         const groupRow = document.createElement("div");
         groupRow.className = "groupRow";
   
-        buffer.forEach((b) => groupRow.appendChild(makeLineGridNode(b.tokens, b.__lineIdx)));
+        buffer.forEach((b) => {
+          const lineWrap = document.createElement("div");
+          lineWrap.className = "lineWrap";
+          lineWrap.dataset.lineIdx = String(b.__lineIdx);
+        
+          lineWrap.appendChild(makeLineGridNode(b.tokens, b.__lineIdx));
+          groupRow.appendChild(lineWrap);
+        });
         elSongRoot.appendChild(groupRow);
   
         buffer = [];
@@ -246,7 +277,14 @@ function getDisplayChord(chord) {
     if (buffer.length > 0) {
       const groupRow = document.createElement("div");
       groupRow.className = "groupRow";
-      buffer.forEach((b) => groupRow.appendChild(makeLineGridNode(b.tokens, b.__lineIdx)));
+      buffer.forEach((b) => {
+        const lineWrap = document.createElement("div");
+        lineWrap.className = "lineWrap";
+        lineWrap.dataset.lineIdx = String(b.__lineIdx);
+      
+        lineWrap.appendChild(makeLineGridNode(b.tokens, b.__lineIdx));
+        groupRow.appendChild(lineWrap);
+      });
       elSongRoot.appendChild(groupRow);
     }
   }
@@ -284,14 +322,23 @@ function getDisplayChord(chord) {
       click("strong");
       renderBeatChips();
       renderSong();
+      autoScrollToActiveLine();
       return;
     }
   
     // PHASE PLAY
     if (phaseRef === "play") {
       if (currentBeatRef === beatsPerBar) {
-        posRef = (posRef + 1) % tokenLineIndexes.length;
+        // nếu đang ở bar cuối -> dừng và về đầu
+        if (posRef >= tokenLineIndexes.length - 1) {
+          stopAndResetToStart();
+          return;
+        }
+      
+        // còn bar tiếp theo thì nhảy bình thường
+        posRef += 1;
         activeLine = tokenLineIndexes[posRef];
+        autoScrollToActiveLine();
       }
   
       currentBeatRef = nextBeat(currentBeatRef);
@@ -324,16 +371,18 @@ function getDisplayChord(chord) {
   
     posRef = 0;
     activeLine = tokenLineIndexes[0] ?? 0;
+    lastScrolledLine = -1;
+    
   
     click("strong");
   
     renderBeatChips();
     renderSong();
+    autoScrollToActiveLine();
   
     timerId = window.setInterval(tick, 60000 / bpm);
   }
-  
-  function stop() {
+  function stopAndResetToStart() {
     clearTimer();
     isPlaying = false;
     setPlayUi(false);
@@ -350,9 +399,51 @@ function getDisplayChord(chord) {
     posRef = 0;
     activeLine = tokenLineIndexes[0] ?? 0;
   
+    lastScrolledLine = -1;
+  
+    renderBeatChips();
+    renderSong();
+    // autoScrollToActiveLine(); // nếu anh muốn tự cuộn về đầu
+  }
+  function stop() {
+    clearTimer();
+    isPlaying = false;
+    setPlayUi(false);
+  
+    phase = "idle";
+    phaseRef = "idle";
+  
+    countIn = null;
+    remainingRef = 0;
+  
+    beat = 1;
+    currentBeatRef = 1;
+  
+    posRef = 0;
+    activeLine = tokenLineIndexes[0] ?? 0;
+    lastScrolledLine = -1;
+  
     renderBeatChips();
     renderSong();
   }
+  const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+// hiện nút khi scroll xuống
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 200) {
+    scrollTopBtn.classList.add("show");
+  } else {
+    scrollTopBtn.classList.remove("show");
+  }
+});
+
+// bấm để cuộn lên đầu
+scrollTopBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
   
   function restartInterval() {
     if (!isPlaying) return;

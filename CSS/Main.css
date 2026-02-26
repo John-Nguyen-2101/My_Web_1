@@ -94,7 +94,35 @@
     margin:0;
     max-width: 560px;
   }
-  
+    /* scroll button  */
+    .scrollTopBtn {
+      position: fixed;
+      bottom: 160px;
+      right: 60px;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      border: none;
+      background: #eb0707;
+      color: rgb(255, 255, 255);
+      font-size: 18px;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    
+    /* .scrollTopBtn:hover {
+      transform: scale(1.1);
+      background: #bb6219;
+    } */
+    
+    .scrollTopBtn.show {
+      display: flex;
+    }
+ 
   .card-grid{
     display:grid;
     grid-template-columns: repeat(3, 1fr);
