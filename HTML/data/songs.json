@@ -1,6 +1,6 @@
 [
   {
-    "id": "ngay-xuan",
+    "id": "Ngayxuanlpxv",
     "title": "Ngày xuân long phụng sum vầy",
     "author": "Quang Huy",
     "style": "Ballad",
@@ -178,6 +178,214 @@
           { "lyric": "", "chord": " ", "beatIndex": 2 },
           { "lyric": "khắp phố", "chord": null, "beatIndex": 2 }
          
+        ]
+      }
+    ]
+  },
+  {
+    "id": "da-du-roi",
+    "title": "Đã đủ rồi",
+    "author": "Jb-Lufe",
+    "style": "Pop/Ballad",
+    "recommendedTempo": "70–85 BPM",
+    "bpm": 76,
+    "timeSigTop": 4,
+    "timeSigBottom": 4,
+    "meterMode": "simple",
+    "lines": [
+      { "section": "VERSE", "id": "v1" },
+      {
+        "tokens": [
+          { "lyric": "Đã", "chord": "Am", "beatIndex": 1 },
+          { "lyric": "đủ", "chord": null, "beatIndex": 1 },
+          { "lyric": "rồi", "chord": " ", "beatIndex": 2 },
+          { "lyric": "em", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "đừng", "chord": "F", "beatIndex": 1 },
+          { "lyric": "cố", "chord": null, "beatIndex": 1 },
+          { "lyric": "nữa", "chord": " ", "beatIndex": 2 },
+          { "lyric": "nhé", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "đừng", "chord": "F", "beatIndex": 1 },
+          { "lyric": "cố", "chord": null, "beatIndex": 1 },
+          { "lyric": "nữa", "chord": " ", "beatIndex": 2 },
+          { "lyric": "nhé", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "đừng", "chord": "F", "beatIndex": 1 },
+          { "lyric": "cố", "chord": null, "beatIndex": 1 },
+          { "lyric": "nữa", "chord": " ", "beatIndex": 2 },
+          { "lyric": "nhé", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "đừng", "chord": "F", "beatIndex": 1 },
+          { "lyric": "cố", "chord": null, "beatIndex": 1 },
+          { "lyric": "nữa", "chord": " ", "beatIndex": 2 },
+          { "lyric": "nhé", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "đừng", "chord": "F", "beatIndex": 1 },
+          { "lyric": "cố", "chord": null, "beatIndex": 1 },
+          { "lyric": "nữa", "chord": " ", "beatIndex": 2 },
+          { "lyric": "nhé", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "đừng", "chord": "F", "beatIndex": 1 },
+          { "lyric": "cố", "chord": null, "beatIndex": 1 },
+          { "lyric": "nữa", "chord": " ", "beatIndex": 2 },
+          { "lyric": "nhé", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "đừng", "chord": "F", "beatIndex": 1 },
+          { "lyric": "cố", "chord": null, "beatIndex": 1 },
+          { "lyric": "nữa", "chord": " ", "beatIndex": 2 },
+          { "lyric": "nhé", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "đừng", "chord": "F", "beatIndex": 1 },
+          { "lyric": "cố", "chord": null, "beatIndex": 1 },
+          { "lyric": "nữa nbkj", "chord": " ", "beatIndex": 2 },
+          { "lyric": "nhé", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "đừng sdfdrg", "chord": "F", "beatIndex": 1 },
+          { "lyric": "cố", "chord": null, "beatIndex": 1 },
+          { "lyric": "nữa", "chord": " ", "beatIndex": 2 },
+          { "lyric": "nhé", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "đừng", "chord": "F", "beatIndex": 1 },
+          { "lyric": "cố", "chord": null, "beatIndex": 1 },
+          { "lyric": "nữa", "chord": " ", "beatIndex": 2 },
+          { "lyric": "nhé", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "đừng", "chord": "F", "beatIndex": 1 },
+          { "lyric": "cố", "chord": null, "beatIndex": 1 },
+          { "lyric": "nữa", "chord": " ", "beatIndex": 2 },
+          { "lyric": "nhé", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "đừng", "chord": "F", "beatIndex": 1 },
+          { "lyric": "cố", "chord": null, "beatIndex": 1 },
+          { "lyric": "nữa", "chord": " ", "beatIndex": 2 },
+          { "lyric": "nhé", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "đừng", "chord": "F", "beatIndex": 1 },
+          { "lyric": "cố", "chord": null, "beatIndex": 1 },
+          { "lyric": "nữa", "chord": " ", "beatIndex": 2 },
+          { "lyric": "nhé", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "đừng", "chord": "F", "beatIndex": 1 },
+          { "lyric": "cố", "chord": null, "beatIndex": 1 },
+          { "lyric": "nữa", "chord": " ", "beatIndex": 2 },
+          { "lyric": "nhé", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "đừng", "chord": "F", "beatIndex": 1 },
+          { "lyric": "cố", "chord": null, "beatIndex": 1 },
+          { "lyric": "nữa", "chord": " ", "beatIndex": 2 },
+          { "lyric": "nhé", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "đừng", "chord": "F", "beatIndex": 1 },
+          { "lyric": "cố", "chord": null, "beatIndex": 1 },
+          { "lyric": "nữa", "chord": " ", "beatIndex": 2 },
+          { "lyric": "nhé", "chord": null, "beatIndex": 2 }
+        ]
+      },
+  
+      { "section": "CHORUS", "id": "c1" },
+      {
+        "tokens": [
+          { "lyric": "Anh", "chord": "C", "beatIndex": 1 },
+          { "lyric": "biết", "chord": null, "beatIndex": 1 },
+          { "lyric": "mà", "chord": " ", "beatIndex": 2 },
+          { "lyric": "em", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "cũng", "chord": "G", "beatIndex": 1 },
+          { "lyric": "mệt", "chord": null, "beatIndex": 1 },
+          { "lyric": "rồi", "chord": " ", "beatIndex": 2 },
+          { "lyric": "đúng", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "cũng", "chord": "G", "beatIndex": 1 },
+          { "lyric": "mệt", "chord": null, "beatIndex": 1 },
+          { "lyric": "rồi", "chord": " ", "beatIndex": 2 },
+          { "lyric": "đúng", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "cũng", "chord": "G", "beatIndex": 1 },
+          { "lyric": "mệt", "chord": null, "beatIndex": 1 },
+          { "lyric": "rồi", "chord": " ", "beatIndex": 2 },
+          { "lyric": "đúng", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "cũng", "chord": "G", "beatIndex": 1 },
+          { "lyric": "mệt", "chord": null, "beatIndex": 1 },
+          { "lyric": "rồi", "chord": " ", "beatIndex": 2 },
+          { "lyric": "đúng", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "cũng", "chord": "G", "beatIndex": 1 },
+          { "lyric": "mệt", "chord": null, "beatIndex": 1 },
+          { "lyric": "rồi", "chord": " ", "beatIndex": 2 },
+          { "lyric": "đúng", "chord": null, "beatIndex": 2 }
+        ]
+      },
+      {
+        "tokens": [
+          { "lyric": "cũng", "chord": "G", "beatIndex": 1 },
+          { "lyric": "mệt", "chord": null, "beatIndex": 1 },
+          { "lyric": "rồi", "chord": " ", "beatIndex": 2 },
+          { "lyric": "đúng", "chord": null, "beatIndex": 2 }
         ]
       }
     ]

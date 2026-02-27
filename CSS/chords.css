@@ -28,11 +28,9 @@
   box-shadow: 0 6px 18px rgba(0,0,0,0.04);
   
 }
-.panelvideoyt {
-
-    width: 74%;
-    margin: 30px auto 0; 
-  
+.panelvideoyt{
+  width: min(var(--container), calc(100% - 40px));
+  margin: 160px auto 0;
 }
 .panelHead {
   display: flex;
@@ -80,31 +78,21 @@
 
 /* ====== SONG LIST ====== */
 .list{
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 8px;
-  }
-  /* responsive: nhỏ hơn thì 2 cột / 1 cột */
-@media (max-width: 980px){
-    .list{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  }
-  @media (max-width: 520px){
-    .list{ grid-template-columns: 1fr; }
-  }
-.listItem {
-  width: 100%;
-  text-align: left;
-  padding: 10px 12px;
-  border-radius: 12px;
-  border: 1px solid rgba(0,0,0,0.08);
-  background: #fafafa;
-  cursor: pointer;
-  min-width: 0;
+  display: flex;          /* bỏ grid 3 cột */
+  flex-direction: column;
+  gap: 6px;
 }
+ 
+/* item chỉ còn text */
+
+/* hover/active */
 .listItem:hover { background: #f3f3f3; }
-.listItem.is-active { border-color: rgba(0,0,0,0.18); background: #fff; }
-.listItemTitle { font-weight: 700; }
-.listItemMeta { margin-top: 4px; }
+.listItem.is-active { background: #fff; border-color: rgba(0,0,0,0.18); }
+
+/* ẩn meta nếu anh không cần */
+.listItemMeta { display: none; }
+/* .listItemTitle { font-weight: 700; } */
+
 
 /* ====== TOOLS ====== */
 .toolGrid { display: grid; gap: 10px; }
@@ -171,7 +159,7 @@
 .faqBody { margin-top: 8px; line-height: 1.5; }
 
 /* ====== CHAT PLACEHOLDER ====== */
-.chatCard { min-height: 240px; }
+.chatCard { min-height: 250px; }
 .chatBox { display: grid; gap: 10px; }
 .chatMessages {
   min-height: 150px;
@@ -203,4 +191,52 @@
   width: 100%;
   height: 100%;
   border: 0;
+}
+/* ===== SONG LIST: fixed height + internal scroll ===== */
+/* ===== SONG PANEL: fixed height + internal scroll (stable) ===== */
+.songPanel{
+  height: 420px;              /* chỉnh tuỳ ý */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;           /* QUAN TRỌNG: chặn list đẩy panel */
+}
+
+/* header của panel không co giãn */
+.songPanel .panelHead{
+  flex: 0 0 auto;
+}
+
+/* list chiếm phần còn lại và scroll */
+.songPanel #songsList{
+  flex: 1 1 auto;
+  min-height: 0;              /* QUAN TRỌNG: để overflow hoạt động trong flex */
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+/* list dạng text */
+.songPanel #songsList.list{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* item 1 dòng */
+.songPanel .listItem{
+  display: block;
+  /* padding: 8px 10px; */
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  color: #566dbe;
+
+}
+
+/* scrollbar đẹp */
+.songPanel #songsList::-webkit-scrollbar{ width: 8px; }
+.songPanel #songsList::-webkit-scrollbar-thumb{
+  background: rgba(0,0,0,0.18);
+  border-radius: 999px;
+}
+.songPanel #songsList::-webkit-scrollbar-track{
+  background: rgba(0,0,0,0.06);
+  border-radius: 999px;
 }

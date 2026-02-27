@@ -6,9 +6,9 @@
     { "name": "Instagram", "icon": "fa-brands fa-instagram", "link": "https://www.instagram.com/jb_lufe.audio/" }
   ],
   "donate": {
-    "bankName": "Vietcombank (Mock)",
-    "bankOwner": "JOHN THANH LỊCH",
-    "bankNumber": "0123 456 789"
+    "bankName": "Techcombank",
+    "bankOwner": "NGUYỄN THANH LỊCH",
+    "bankNumber": "19031366021012"
   },
   "tools": [
     {
@@ -62,8 +62,8 @@
     { "title": "Course Bundle", "desc": "Mock khóa học/ebook sau này.", "chip": "Digital", "link": "#" }
   ],
   "posts": [
-    { "title": "Passing chord là gì?", "desc": "Giải thích dễ hiểu + ví dụ thực tế.", "chip": "Harmony", "link": "#" },
-    { "title": "Cách đệm hát không bị lạc tone", "desc": "Checklist tai nghe + hợp âm + nhịp.", "chip": "Guitar", "link": "#" },
+    { "title": "Passing chord là gì?", "desc": "Giải thích dễ hiểu + ví dụ thực tế.", "chip": "Harmony", "link": "../HTML/post.html?slug=passing-chord-la-gi" },
+    { "title": "Cách đệm hát không bị lạc tone", "desc": "Checklist tai nghe + hợp âm + nhịp.", "chip": "Guitar", "link": "../HTML/post.html?slug=dem-hat-khong-bi-lac-tone" },
     { "title": "Attack/Decay/Sustain/Release", "desc": "Hiểu ADSR để mix nhạc tốt hơn.", "chip": "Mixing", "link": "#" }
   ]
 }

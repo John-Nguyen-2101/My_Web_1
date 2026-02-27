@@ -458,7 +458,17 @@ async function loadSong() {
       if (!res.ok) throw new Error(`Fetch songs.json failed: ${res.status}`);
   
       const allSongs = await res.json();
-      demoSong = allSongs[0]; // lấy bài đầu tiên
+      const params = new URLSearchParams(window.location.search);
+      const songId = (params.get("song") || "").trim();
+
+      demoSong = songId
+        ? allSongs.find((s) => s.id === songId)
+        : allSongs[0]; // fallback nếu không có ?song=
+
+      if (!demoSong) {
+        alert("Không tìm thấy bài hát: " + songId);
+        return;
+      }
   
       // ✅ set các biến phụ thuộc demoSong tại đây
       meter = getMeterConfig(demoSong);

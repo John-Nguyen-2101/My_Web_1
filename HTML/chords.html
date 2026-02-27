@@ -55,22 +55,13 @@
               <div class="muted small">Tip: gõ tên bài / ca sĩ / keyword.</div>
             </section>
       
-            <!-- Song list -->
-            <section class="panelCard">
+            <section class="panelCard songPanel">
               <div class="panelHead">
                 <h2 class="panelTitle">Danh sách bài hát</h2>
                 <span class="muted small" id="songCount">0 bài</span>
               </div>
-      
-              <div id="songsList" class="list">
-                <!-- JS render songs -->
-                <!-- item mẫu:
-                <button class="listItem is-active">
-                  <div class="listItemTitle">Tên bài</div>
-                  <div class="listItemMeta muted small">Tác giả • 80 BPM • 4/4</div>
-                </button>
-                -->
-              </div>
+            
+              <div id="songsList" class="list"></div>
             </section>
       
             <!-- Tools list -->
@@ -160,29 +151,30 @@
                 </div>
               </section>
             </section>
-      
+          </section>
           
         </div>
-          <!-- Bottom: YouTube iframes -->
-          <section class="panelCard panelvideoyt">
-            <div class="panelHead">
-              <h2 class="panelTitle">Video từ kênh YouTube</h2>
-              <span class="muted small">Iframe tạm để link trống</span>
+          
+       
+        <!-- Bottom: YouTube iframes -->
+        <div class="container"><section class="panelCard panelvideoyt">
+          <div class="panelHead">
+            <h2 class="panelTitle">Video từ kênh YouTube</h2>
+            <span class="muted small">Iframe tạm để link trống</span>
+          </div>
+  
+          <div class="videoGrid">
+            <div class="videoFrame">
+              <iframe class="video" src="" title="YouTube video 1" allowfullscreen></iframe>
             </div>
-    
-            <div class="videoGrid">
-              <div class="videoFrame">
-                <iframe class="video" src="" title="YouTube video 1" allowfullscreen></iframe>
-              </div>
-              <div class="videoFrame">
-                <iframe class="video" src="" title="YouTube video 2" allowfullscreen></iframe>
-              </div>
-              <div class="videoFrame">
-                <iframe class="video" src="" title="YouTube video 3" allowfullscreen></iframe>
-              </div>
+            <div class="videoFrame">
+              <iframe class="video" src="" title="YouTube video 2" allowfullscreen></iframe>
             </div>
-          </section>
-        </section>
+            <div class="videoFrame">
+              <iframe class="video" src="" title="YouTube video 3" allowfullscreen></iframe>
+            </div>
+          </div>
+        </section></div>
       </main>
 
     <!-- Footer -->
@@ -203,5 +195,6 @@
       <i class="fa-solid fa-arrow-up"></i>
     </button>
     <script src="../JS/chords.js"></script>
+    <!-- <script src="../JS/main.js"></script> -->
   </body>
 </html>

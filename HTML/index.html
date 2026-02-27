@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Lufe Audio - Landing</title>
-    <link rel="stylesheet" href="../CSS/tool.css">
+    <link rel="stylesheet" href="../CSS/Home.css">
     <link rel="stylesheet" href="../CSS/Main.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   </head>
@@ -16,7 +16,7 @@
         <a class="logo" href="#">Lufe Audio</a>
 
         <nav class="nav">
-          <a href="#" class="btn btn-small">Trang Chủ</a>
+          <a href="../HTML/index.html" class="btn btn-small">Trang Chủ</a>
           <a href="../HTML/chords.html" >Hợp âm</a>
           <a href="#">Dịch vụ</a>
             <a href="#">Khóa học</a>
@@ -30,7 +30,7 @@
       </div>
 
       <div class="mobile-nav" id="mobileNav">
-        <a href="#">Trang Chủ</a>
+        <a href="../HTML/index.html">Trang Chủ</a>
         <a href="../HTML/chords.html" >Hợp âm</a>
         <a href="#">Dịch vụ</a>
           <a href="#">Khóa học</a>
@@ -192,20 +192,30 @@
 
             <div class="donate-right">
               <div class="qr-mock">
-                <p class="qr-title">QR (Mock)</p>
-                <div class="qr-square" aria-hidden="true"></div>
-                <p class="muted small">QR sẽ dán vào đây.</p>
+                <p class="qr-title">QR ngân hàng</p>
+              
+                <img
+                  class="qr-img"
+                  src="../IMG/QR.png"
+                  alt="QR chuyển khoản ngân hàng"
+                  loading="lazy"
+                />
+              
+                <p class="muted small">Quét QR để chuyển khoản nhanh.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
     </main>
+    <button id="scrollTopBtn" class="scrollTopBtn">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
      <!-- Footer -->
      <footer class="site-footer">
       <div class="container footer-inner">
-        <p>© Copyright by Lufe Audio</p><span id="year"></span>
+        <p>© Copyright by Lufe Audio</p>
         <div class="footer-links">
           <!-- <span>Theo dõi mình tại đây :</span> -->
           <a href="https://www.facebook.com/guitaristVN/"><i class="fa fa1 fa-brands fa-facebook"></i></a>
@@ -215,7 +225,7 @@
         </div>
       </div>
     </footer>
-
+    <script src="../JS/scroll.js"></script>
     <script src="../JS/main.js"></script>
   </body>
 </html>

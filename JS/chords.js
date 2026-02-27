@@ -29,7 +29,19 @@
     function $(id) {
       return document.getElementById(id);
     }
+    // ====== Header mobile toggle ======
+    const navToggle = document.getElementById("navToggle");
+    const mobileNav = document.getElementById("mobileNav");
   
+    if (navToggle && mobileNav) {
+      navToggle.addEventListener("click", () => {
+        mobileNav.classList.toggle("is-open");
+        navToggle.setAttribute(
+          "aria-label",
+          mobileNav.classList.contains("is-open") ? "Đóng menu" : "Mở menu"
+        );
+      });
+    }
     // -------------------- Data (mock) --------------------
     const data = {
       social: [
@@ -104,9 +116,9 @@
     // Mock songs list (anh có thể thay bằng fetch songs.json sau)
     // Link tạm thời để "#"; sau này anh đổi thành: `../HTML/chord.html?song=${encodeURIComponent(s.id)}`
     const songs = [
-      { id: "Ngayxuanlpxv", title: "Ngày xuân long phụng xum vầy", author: "Quang Minh", bpm: 80, timeSig: "2/4", link: "../HTML/chord.html" },
-      { id: "da-du-roi", title: "Đã đủ rồi", author: "Jb-Lufe", bpm: 76, timeSig: "4/4", link: "#" },
-      { id: "tuong-tu", title: "Tương tư", author: "Jb-Lufe", bpm: 82, timeSig: "4/4", link: "#" }
+      { id: "Ngayxuanlpxv", title: "Ngày xuân long phụng xum vầy", author: "Quang Minh" },
+      { id: "da-du-roi", title: "Đã đủ rồi", author: "Jb-Lufe"},
+      
     ];
   
     // -------------------- Renderers --------------------
@@ -173,31 +185,37 @@
           .join("");
       }
   
-    function renderSongs(list, activeId = null) {
-      const el = $("songsList");
-      const elCount = $("songCount");
-      if (!el) return;
-  
-      const safeList = list || [];
-      if (elCount) elCount.textContent = `${safeList.length} bài`;
-  
-      el.innerHTML = safeList
-        .map((s) => {
-          const title = escapeHTML(s.title);
-          const meta = escapeHTML(`${s.author || ""}${s.bpm ? " • " + s.bpm + " BPM" : ""}${s.timeSig ? " • " + s.timeSig : ""}`);
-          const link = safeLink(s.link || "#");
-          const isActive = activeId && s.id === activeId;
-  
-          // render dạng <a> để click là link sang trang hợp âm (tạm thời #)
-          return `
-            <a class="listItem ${isActive ? "is-active" : ""}" href="${link}" data-song-id="${escapeHTML(s.id)}">
-              <div class="listItemTitle">${title}</div>
-              <div class="listItemMeta muted small">${meta}</div>
-            </a>
-          `;
-        })
-        .join("");
-    }
+      function renderSongs(list, activeId = null) {
+        const el = $("songsList");
+        const elCount = $("songCount");
+        if (!el) return;
+      
+        const safeList = list || [];
+        if (elCount) elCount.textContent = `${safeList.length} bài`;
+      
+        el.innerHTML = safeList
+          .map((s) => {
+            const title = escapeHTML(s.title);
+            const meta = escapeHTML(
+              `${s.author || ""}${s.bpm ? " • " + s.bpm + " BPM" : ""}${s.timeSig ? " • " + s.timeSig : ""}`
+            );
+      
+            // 👇 BUILD LINK THEO ID
+            const link = `../HTML/chord.html?song=${encodeURIComponent(s.id)}`;
+      
+            const isActive = activeId && s.id === activeId;
+      
+            return `
+              <a class="listItem ${isActive ? "is-active" : ""}" 
+                 href="${link}" 
+                 data-song-id="${escapeHTML(s.id)}">
+                <div class="listItemTitle">${title}</div>
+                <div class="listItemMeta muted small">${meta}</div>
+              </a>
+            `;
+          })
+          .join("");
+      }
   
     // -------------------- Search --------------------
     function normalize(text) {
