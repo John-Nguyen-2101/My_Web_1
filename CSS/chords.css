@@ -17,6 +17,9 @@
 @media (max-width: 980px) {
   .chordsLayout { grid-template-columns: 1fr; }
 }
+@media (max-width: 520px) {
+  .chordsLayout { gap: 0px; }
+}
 
 /* ====== PANELS ====== */
 
@@ -26,11 +29,14 @@
   border-radius: 14px;
   padding: 14px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.04);
-  
+ 
+}
+.faqCard{
+  height: 300px;
 }
 .panelvideoyt{
   width: min(var(--container), calc(100% - 40px));
-  margin: 160px auto 0;
+  margin:0 auto ;
 }
 .panelHead {
   display: flex;
@@ -121,12 +127,12 @@
 }
 
 /* ====== RIGHT SIDE ====== */
-.rightPanel { display: grid; gap: 18px; }
+.rightPanel { display: grid; grid-template-rows: repeat(3,1fr); }
 
 .needHelpRow {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
+  /* grid-template-columns: 1fr 1fr; */
+  /* gap: 18px; */
   height: 320px;
 }
 @media (max-width: 980px) {
@@ -137,8 +143,8 @@
 /* ALBUM: 1 card / row */
 .albumGrid{
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
+    /* grid-template-columns: 1fr; */
+    /* gap: 12px; */
   }
 @media (max-width: 1200px) {
   .albumGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -152,7 +158,7 @@
 .faqItem {
   border: 1px solid rgba(0,0,0,0.08);
   border-radius: 12px;
-  padding: 10px 12px;
+  padding: 5px 5px;
   background: #fafafa;
 }
 .faqItem summary { cursor: pointer; font-weight: 600; }

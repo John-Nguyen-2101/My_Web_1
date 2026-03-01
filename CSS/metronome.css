@@ -1,0 +1,166 @@
+/* metronome.css */
+.page {
+    padding: 24px 0 48px;
+  }
+  
+  .toolHeader {
+    max-width: 1000px;
+    margin: 0 auto 18px;
+    padding: 0 16px;
+  }
+  
+  .toolSub {
+    margin-top: 8px;
+    opacity: 0.9;
+  }
+  
+  .toolCard {
+    max-width: 1000px;
+    margin: 14px auto;
+    padding: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    background: rgba(0, 0, 0, 0.15);
+  }
+  
+  .row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  
+  .rowWrap {
+    flex-wrap: wrap;
+  }
+  
+  .control {
+    min-width: 180px;
+    flex: 1;
+  }
+  
+  .control.wide {
+    flex: 1 1 520px;
+    min-width: 280px;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  .select,
+  .input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(0,0,0,0.22);
+    color: rgba(234,240,255,.92);
+    outline: none;
+  }
+  
+  .range {
+    width: 100%;
+  }
+  
+  .hint {
+    margin-top: 8px;
+    opacity: 0.85;
+    font-size: 0.95rem;
+  }
+  
+  .smallNote {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    margin-left: 8px;
+  }
+  
+  .bpmRow {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .bpmRow .input {
+    max-width: 120px;
+  }
+  
+  .actions {
+    margin-top: 10px;
+  }
+  
+  .status {
+    flex: 1;
+    min-width: 260px;
+  }
+  
+  .statusLine {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(0,0,0,0.18);
+    font-size: 0.92rem;
+  }
+  
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .chipBeat {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(121, 110, 110, 0.12);
+    background: rgba(111, 135, 228, 0.38);
+    font-weight: 700;
+    user-select: none;
+  }
+  
+  .chipBeat.active {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    border-color: rgba(8, 243, 63, 0.28);
+    background-color: rgba(32, 66, 201, 0.38);;
+  }
+  
+  .btn2 {
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.14);
+    background: rgba(0,0,0,0.2);
+    color: rgba(234,240,255,.92);
+    cursor: pointer;
+  }
+  
+  .btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  .btnPrimary {
+    background: rgba(20, 201, 36, 0.48);
+  }
+  
+  .btnDanger {
+    background: rgba(245, 16, 16, 0.48);
+  }
+  
+  .btnGhost {
+    background: rgba(37, 51, 131, 0.12);
+  }

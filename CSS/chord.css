@@ -56,30 +56,28 @@
   }
   /* Buttons (play/stop) */
 .btnPlay {
-    background: rgb(24, 24, 232);
+    background: rgb(232, 45, 24);
     color: white;
     border: none;
     border-radius: 10px;
     font-weight: 800;
     cursor: pointer;
-    padding: 5px;
+    padding: 10px;
   }
   .btnPlay:hover {
-    background: rgb(81, 81, 239);
+    background: rgb(131, 131, 236);
   }
   
-  .btnStop {
-    border: none;
-    background: rgb(255, 0, 0);
+  .is-stop {
+    background: rgb(24, 31, 232);
     color: white;
+    border: none;
     border-radius: 10px;
     font-weight: 800;
     cursor: pointer;
-    padding: 5px;
+    padding: 10px;
   }
-  .btnStop:hover {
-    background: rgb(235, 127, 59);
-  }
+  
   /* beat chips */
 .beatBox {
     display: flex;

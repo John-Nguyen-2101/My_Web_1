@@ -1,6 +1,6 @@
 let elTitle, elAuthor, elStyle, elTimeSig, elTempoHint, elBpmNow;
 let elBeatBox, elSongRoot;
-let btnPlay, btnStop;
+let btnPlay;
 let bpmRange, bpmLabel;
 let btnUp, btnDown, btnReset, transposeLabel;
 // ------------------------ DATA ------------------------
@@ -123,8 +123,15 @@ function getDisplayChord(chord) {
   }
   
   function setPlayUi(playing) {
-    btnPlay.disabled = playing;
-    btnStop.disabled = !playing;
+    if (!btnPlay) return;
+  
+    if (playing) {
+      btnPlay.innerHTML = `<i class="fa-solid fa-stop"></i> Stop`;
+      btnPlay.classList.add("is-stop");
+    } else {
+      btnPlay.innerHTML = `<i class="fa-solid fa-play"></i> Start`;
+      btnPlay.classList.remove("is-stop");
+    }
   }
   
   function renderMeta() {
@@ -502,7 +509,7 @@ async function loadSong() {
     elSongRoot = document.getElementById("songRoot");
   
     btnPlay = document.getElementById("btnPlay");
-    btnStop = document.getElementById("btnStop");
+   
   
     bpmRange = document.getElementById("bpmRange");
     bpmLabel = document.getElementById("bpmLabel");
@@ -511,9 +518,10 @@ async function loadSong() {
     renderBeatChips();
     renderSong();
     setPlayUi(false);
-  
-    btnPlay.addEventListener("click", () => start());
-    btnStop.addEventListener("click", () => stop());
+    btnPlay.addEventListener("click", () => {
+      if (isPlaying) stop();     // đang chạy thì bấm sẽ stop
+      else start();              // đang dừng thì bấm sẽ start
+    });
   
     bpmRange.addEventListener("input", (e) => {
       bpm = Number(e.target.value);

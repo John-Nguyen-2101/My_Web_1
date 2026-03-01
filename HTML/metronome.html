@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Lufe Audio - Metronome</title>
+
+    <link rel="stylesheet" href="../CSS/Main.css" />
+    <link rel="stylesheet" href="../CSS/metronome.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="logo" href="#">Lufe Audio</a>
+
+        <nav class="nav">
+          <a href="../HTML/index.html">Trang Chủ</a>
+          <a href="../HTML/chords.html">Hợp âm</a>
+          <a href="../HTML/metronome.html" class="btn btn-small">Tools</a>
+          <!-- <a href="#">Dịch vụ</a> -->
+          <a href="#">Khóa học</a>
+          <a href="#">Liên hệ</a>
+        </nav>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Mở menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <div class="mobile-nav" id="mobileNav">
+        <a href="../HTML/index.html">Trang Chủ</a>
+        <a href="../HTML/chords.html">Hợp âm</a>
+        <a href="../HTML/metronome.html" class="active">Tools</a>
+        <!-- <a href="#">Dịch vụ</a> -->
+        <a href="#">Khóa học</a>
+        <a href="#">Liên hệ</a>
+      </div>
+    </header>
+
+    <main class="page">
+      <header class="toolHeader">
+        <h1 class="h1">Metronome</h1>
+        <p class="toolSub">
+          Hỗ trợ nhịp <b>2/4, 3/4, 4/4</b> và <b>6/8 </b>.
+        </p>
+      </header>
+
+      <section class="toolCard">
+        <div class="row rowWrap">
+          <div class="control">
+            <label class="label">Time Signature</label>
+            <select id="timeSig" class="select">
+              <option value="2/4">2/4</option>
+              <option value="3/4">3/4</option>
+              <option value="4/4" selected>4/4</option>
+              <option value="6/8">6/8</option>
+            </select>
+          </div>
+
+          <div class="control">
+            <label class="label">Accent</label>
+            <select id="accentMode" class="select">
+              <option value="classic" selected>Mạnh ở phách 1</option>
+              <option value="soft">Mềm hơn</option>
+              <option value="none">Không accent</option>
+            </select>
+          </div>
+
+          <div class="control">
+            <label class="label">Volume</label>
+            <input id="volRange" class="range" type="range" min="0" max="100" value="70" />
+            <div class="hint"><span id="volLabel">70</span>%</div>
+          </div>
+        </div>
+
+        <div class="row rowWrap">
+          <div class="control wide">
+            <label class="label">
+              Tempo: <b><span id="bpmLabel">80</span> BPM</b>
+              <span class="smallNote" id="tempoNote"></span>
+            </label>
+            <input id="bpmRange" class="range" type="range" min="30" max="240" value="80" />
+            <div class="bpmRow">
+              <input id="bpmInput" class="input" type="number" min="30" max="240" value="80" />
+              <button id="tapBtn" class="btn2 btnGhost" type="button">
+                <i class="fa-solid fa-hand-pointer"></i> Tap
+              </button>
+              <button id="resetBtn" class="btn2 btnGhost" type="button">
+                Reset
+              </button>
+            </div>
+            <div class="hint">Tip: tập chậm, lên dần. 6/8 sẽ đếm theo ♩. (dotted quarter).</div>
+          </div>
+        </div>
+
+        <div class="row rowWrap actions">
+            <button id="toggleBtn" class="btn2 btnPrimary" type="button">
+                <i class="fa-solid fa-play"></i> Start
+              </button>
+
+          <div class="status">
+            <div class="statusLine">
+              <span class="pill" id="sigPill">4/4</span>
+              <span class="pill" id="modePill">Quarter notes</span>
+              <span class="pill" id="subPill">—</span>
+            </div>
+            <div id="chips" class="chips"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="toolCard">
+        <h2 class="h2">Cách đếm</h2>
+        <ul class="ul">
+          <li><b>2/4</b>: 1 - 2</li>
+          <li><b>3/4</b>: 1 - 2 - 3</li>
+          <li><b>4/4</b>: 1 - 2 - 3 - 4</li>
+          <li>
+            <b>6/8</b> (đếm 2 phách): <b>1-trip-let | 2-trip-let</b>
+            <br />
+            <span class="smallNote">Tổng 6 click mỗi bar: (1, trip, let, 2, trip, let)</span>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© Copyright by Lufe Audio</p>
+        <div class="footer-links">
+          <a href="https://www.facebook.com/guitaristVN/"><i class="fa fa1 fa-brands fa-facebook"></i></a>
+          <a href="https://www.tiktok.com/@jblufe.studio"><i class="fa fa2 fa-brands fa-tiktok"></i></a>
+          <a href="https://www.instagram.com/jb_lufe.audio/"><i class="fa fa3 fa-brands fa-instagram"></i></a>
+          <a href="https://www.youtube.com/@lufeaudio1526"><i class="fa fa4 fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+    </footer>
+
+    <button id="scrollTopBtn" class="scrollTopBtn">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script src="../JS/main.js"></script>
+    <script src="../JS/metronome.js"></script>
+  </body>
+</html>
