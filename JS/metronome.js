@@ -6,14 +6,14 @@
   
     const bpmRange = document.getElementById("bpmRange");
     const bpmLabel = document.getElementById("bpmLabel");
-    const bpmInput = document.getElementById("bpmInput");
+    
   
     const volRange = document.getElementById("volRange");
     const volLabel = document.getElementById("volLabel");
   
     const toggleBtn = document.getElementById("toggleBtn");
-    const tapBtn = document.getElementById("tapBtn");
-    const resetBtn = document.getElementById("resetBtn");
+   
+    
   
     const chips = document.getElementById("chips");
     const sigPill = document.getElementById("sigPill");
@@ -77,8 +77,7 @@
     let stepsPerBar = 4;
     let stepIndex = 0; // 0..stepsPerBar-1
   
-    // tap tempo
-    let tapTimes = [];
+   
   
     function getConfig(signature) {
       if (signature === "6/8") {
@@ -234,7 +233,7 @@
       bpm = n;
       bpmLabel.textContent = String(n);
       bpmRange.value = String(n);
-      bpmInput.value = String(n);
+     
       restartIfPlaying();
     }
   
@@ -251,44 +250,15 @@
       restartIfPlaying();
     }
   
-    // ---------- TAP TEMPO ----------
-    function tap() {
-      const now = performance.now();
-      tapTimes.push(now);
+    
   
-      // keep last 8 taps
-      if (tapTimes.length > 8) tapTimes.shift();
-  
-      if (tapTimes.length < 2) return;
-  
-      // average interval
-      const intervals = [];
-      for (let i = 1; i < tapTimes.length; i++) {
-        intervals.push(tapTimes[i] - tapTimes[i - 1]);
-      }
-  
-      const avgMs = intervals.reduce((a, b) => a + b, 0) / intervals.length;
-      if (!avgMs || avgMs < 120 || avgMs > 2000) return;
-  
-      const estBpm = Math.round(60000 / avgMs);
-      setBpm(estBpm);
-    }
-  
-    function resetAll() {
-      tapTimes = [];
-      accentMode.value = "classic";
-      timeSig.value = "4/4";
-      onChangeSig("4/4");
-      setBpm(80);
-      setVolume(70);
-    }
   
     // ---------- Wire up ----------
     timeSig.addEventListener("change", (e) => onChangeSig(e.target.value));
     accentMode.addEventListener("change", () => restartIfPlaying());
   
     bpmRange.addEventListener("input", (e) => setBpm(e.target.value));
-    bpmInput.addEventListener("input", (e) => setBpm(e.target.value));
+    
   
     volRange.addEventListener("input", (e) => setVolume(e.target.value));
   
@@ -300,8 +270,8 @@
         }
       });
   
-    tapBtn.addEventListener("click", tap);
-    resetBtn.addEventListener("click", resetAll);
+    
+    
   
     // initial render
     setBpm(80);

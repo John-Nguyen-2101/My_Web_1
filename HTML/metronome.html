@@ -86,15 +86,7 @@
               <span class="smallNote" id="tempoNote"></span>
             </label>
             <input id="bpmRange" class="range" type="range" min="30" max="240" value="80" />
-            <div class="bpmRow">
-              <input id="bpmInput" class="input" type="number" min="30" max="240" value="80" />
-              <button id="tapBtn" class="btn2 btnGhost" type="button">
-                <i class="fa-solid fa-hand-pointer"></i> Tap
-              </button>
-              <button id="resetBtn" class="btn2 btnGhost" type="button">
-                Reset
-              </button>
-            </div>
+            
             <div class="hint">Tip: tập chậm, lên dần. 6/8 sẽ đếm theo ♩. (dotted quarter).</div>
           </div>
         </div>
@@ -128,6 +120,31 @@
           </li>
         </ul>
       </section>
+      <section class="toolCard">
+        <h2 class="h2">Note Ear Training</h2>
+      
+        <div class="row actions">
+          <button id="listenBtn" class="btn2 btnPrimary">🔊 Listen</button>
+          <button id="showBtn" class="btn2 btnGhost">Show</button>
+          <button id="hideBtn" class="btn2 btnGhost">Hide</button>
+        </div>
+      
+        <div class="row" style="margin-top:15px;">
+          <span class="pill" id="noteDisplay">???</span>
+        </div>
+      
+        <div class="row actions" style="margin-top:15px;">
+          <button id="prevBtn" class="btn2 btnGhost">⬅ Prev</button>
+          <button id="nextBtn" class="btn2 btnGhost">Next ➡</button>
+          <button id="resetBtn" class="btn2 btnGhost">Reset</button>
+        </div>
+      
+        <div class="row" style="margin-top:20px;">
+          <div id="guessArea" class="chips"></div>
+        </div>
+      
+        <div class="hint" id="scoreHint"></div>
+      </section>
     </main>
 
     <!-- Footer -->
@@ -149,5 +166,6 @@
 
     <script src="../JS/main.js"></script>
     <script src="../JS/metronome.js"></script>
+    <script src="../JS/note-trainer.js"></script>
   </body>
 </html>
