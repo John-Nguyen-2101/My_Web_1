@@ -3,6 +3,8 @@ let elBeatBox, elSongRoot;
 let btnPlay;
 let bpmRange, bpmLabel;
 let btnUp, btnDown, btnReset, transposeLabel;
+let elNotesHint;
+let btnTone, elToneOut;
 // ------------------------ DATA ------------------------
 let demoSong = null;
 
@@ -15,6 +17,11 @@ let tokenLineIndexes = [];
 let posRef = 0;
 
 // ------------------------ STATE (chung) ------------------------
+let chordMode = "basic"; // "basic" | "adv"
+const savedChordMode = localStorage.getItem("chordMode");
+if (savedChordMode === "adv" || savedChordMode === "basic") {
+  chordMode = savedChordMode;
+}
 let isPlaying = false;
 let phase = "idle";
 let countIn = null;
@@ -103,7 +110,51 @@ function transposeChord(chord, semis) {
 function getDisplayChord(chord) {
   return transposeChord(chord, transpose);
 }
-  
+function isRealChord(ch) {
+  return !!ch && String(ch).trim() !== "";
+}
+
+function findLastChordRaw(song) {
+  if (!song?.lines) return null;
+
+  // scan ngược: dòng -> token
+  for (let i = song.lines.length - 1; i >= 0; i--) {
+    const line = song.lines[i];
+    if (!line?.tokens) continue;
+
+    for (let j = line.tokens.length - 1; j >= 0; j--) {
+      const t = line.tokens[j];
+      const raw = getTokenChord(t); // basic/adv theo mode
+      if (isRealChord(raw)) return raw;
+    }
+  }
+  return null;
+}
+
+// lấy "root" của chord: C, G#, Bb...
+function chordRoot(chord) {
+  const m = String(chord).trim().match(/^([A-G])([#b]?)/);
+  return m ? (m[1] + (m[2] || "")) : null;
+}
+
+function getSongToneDisplay() {
+
+  const toneRaw = demoSong.tone ?? demoSong.key ?? "—";
+  const tone = toneRaw !== "—" ? getDisplayChord(toneRaw) : "—";
+
+  const lastRaw = findLastChordRaw(demoSong);
+  const lastChord = lastRaw ? getDisplayChord(lastRaw) : "—";
+
+  return { tone, lastChord };
+}
+function getTokenChord(t) {
+  // Nếu anh giữ chord cũ làm basic:
+  const basic = t.chordBasic ?? t.chord ?? null;
+  const adv = t.chordAdv ?? null;
+
+  if (chordMode === "adv") return adv ?? basic; // thiếu adv thì fallback basic
+  return basic;
+}
   // ------------------------ RENDER HELPERS ------------------------
   function beatClickLevel(b) {
     if (meter.accentStrong.includes(b)) return "strong";
@@ -133,7 +184,27 @@ function getDisplayChord(chord) {
       btnPlay.classList.remove("is-stop");
     }
   }
+  function renderNotesHint() {
+    if (!elNotesHint || !demoSong) return;
   
+    const top = demoSong.timeSigTop;
+    const bottom = demoSong.timeSigBottom;
+  
+    // 2/4
+    if (top === 2 && bottom === 4) {
+      elNotesHint.textContent = "Notes: Mỗi ô = 1 nốt đơn (♪)";
+      return;
+    }
+  
+    // 6/8
+    if (top === 6 && bottom === 8) {
+      elNotesHint.textContent = "Notes: Mỗi 3 ô = 1 liên ba (1-la-li / 2-la-li)";
+      return;
+    }
+  
+    // còn lại
+    elNotesHint.textContent = "Notes: Mỗi ô = 1 nốt đen (♩)";
+  }
   function renderMeta() {
     elTitle.textContent = demoSong.title;
     elAuthor.textContent = `👤 ${demoSong.author}`;
@@ -156,6 +227,8 @@ function getDisplayChord(chord) {
     }
   }
   
+  let countInShown = false; // reset mỗi lần renderSong()
+
   function makeSectionNode(sectionLine) {
     const wrap = document.createElement("div");
     wrap.className = "sectionWrapper";
@@ -166,11 +239,14 @@ function getDisplayChord(chord) {
   
     wrap.appendChild(title);
   
-    if (phase === "countin" && countIn !== null && sectionLine.id === "section1") {
+    // show count-in ở section đầu tiên gặp được trong bài
+    if (phase === "countin" && countIn !== null && !countInShown) {
       const ci = document.createElement("div");
       ci.className = "sectionCountIn";
       ci.textContent = String(countIn);
       wrap.appendChild(ci);
+  
+      countInShown = true;
     }
   
     return wrap;
@@ -205,13 +281,15 @@ function getDisplayChord(chord) {
       const cell = document.createElement("div");
       cell.className = "gridCell chordCell";
   
-      const hasChord = !!t.chord;
+      const rawChord = getTokenChord(t);   // <= chord theo mode
+      const hasChord = !!rawChord;
       const isCurrentLine = lineIdx === activeLine;
       const chordBeatActive =
         isPlaying && phase !== "countin" && isCurrentLine && hasChord && t.beatIndex === beat;
-  
+
       if (chordBeatActive) cell.classList.add("cellActive");
-      cell.textContent = hasChord ? getDisplayChord(t.chord) : "\u00A0";
+
+      cell.textContent = hasChord ? getDisplayChord(rawChord) : "\u00A0";
   
       grid.appendChild(cell);
     });
@@ -231,6 +309,7 @@ function getDisplayChord(chord) {
     elSongRoot.innerHTML = "";
   
     // group 3 token-lines per row (like your React)
+    countInShown = false;
     let buffer = [];
     let groupCount = 0;
   
@@ -498,42 +577,71 @@ async function loadSong() {
   }
   // ------------------------ INIT ------------------------
   function init() {
+
     elTitle = document.getElementById("songTitle");
     elAuthor = document.getElementById("songAuthor");
     elStyle = document.getElementById("songStyle");
     elTimeSig = document.getElementById("songTimeSig");
     elTempoHint = document.getElementById("songTempoHint");
     elBpmNow = document.getElementById("songBpmNow");
-  
+    elNotesHint = document.getElementById("notesHint");
     elBeatBox = document.getElementById("beatBox");
     elSongRoot = document.getElementById("songRoot");
-  
+    btnTone = document.getElementById("btnTone");
+    elToneOut = document.getElementById("toneOut");
     btnPlay = document.getElementById("btnPlay");
    
   
     bpmRange = document.getElementById("bpmRange");
     bpmLabel = document.getElementById("bpmLabel");
-  
-    renderMeta();
-    renderBeatChips();
-    renderSong();
-    setPlayUi(false);
+   
     btnPlay.addEventListener("click", () => {
       if (isPlaying) stop();     // đang chạy thì bấm sẽ stop
       else start();              // đang dừng thì bấm sẽ start
     });
   
+  
+    renderMeta();
+    renderBeatChips();
+    renderNotesHint();
+    renderSong();
+    setPlayUi(false);
+    renderTone();
     bpmRange.addEventListener("input", (e) => {
       bpm = Number(e.target.value);
       bpmLabel.textContent = String(bpm);
       elBpmNow.textContent = `⏱ Đang tập: ${bpm} BPM`;
       restartInterval();
     });
+    function renderTone() {
+      if (!elToneOut) return;
+      const { tone, lastChord } = getSongToneDisplay();
+      elToneOut.textContent = `Tone: ${tone}`;
+    }
+    // changing chords
+    const btnBasic = document.getElementById("btnBasic");
+    const btnAdv = document.getElementById("btnAdv");
+
+    function setChordMode(mode){
+      chordMode = mode;
+      localStorage.setItem("chordMode", mode);
+    
+      btnBasic?.classList.toggle("is-active", mode === "basic");
+      btnAdv?.classList.toggle("is-active", mode === "adv");
+    
+      renderSong();
+      renderTone();
+    }
+
+    btnBasic?.addEventListener("click", () => setChordMode("basic"));
+    btnAdv?.addEventListener("click", () => setChordMode("adv"));
+    btnTone?.addEventListener("click", renderTone);
+    setChordMode(chordMode);
       // --- TRANSPOSE CONTROLS ---
-  const btnUp = document.getElementById("btnUp");
-  const btnDown = document.getElementById("btnDown");
-  const btnReset = document.getElementById("btnReset");
-  const transposeLabel = document.getElementById("transposeLabel");
+      btnUp = document.getElementById("btnUp");
+      btnDown = document.getElementById("btnDown");
+      btnReset = document.getElementById("btnReset");
+      transposeLabel = document.getElementById("transposeLabel");
 
   function updateTransposeLabel() {
     if (transposeLabel) transposeLabel.textContent = `🎚 Transpose: ${transpose}`;
@@ -543,18 +651,21 @@ async function loadSong() {
     transpose += 1;
     updateTransposeLabel();
     renderSong();
+    renderTone();
   });
 
   btnDown?.addEventListener("click", () => {
     transpose -= 1;
     updateTransposeLabel();
     renderSong();
+    renderTone();
   });
 
   btnReset?.addEventListener("click", () => {
     transpose = 0;
     updateTransposeLabel();
     renderSong();
+    renderTone();
   });
 
   updateTransposeLabel();

@@ -63,10 +63,14 @@
             <div id="beatBox" class="beatBox"></div>
           </div>
           <div class="row toneRow">
+            <button id="btnBasic" class="btn1 is-active">Basic</button>
+            <button id="btnAdv" class="btn1">Advanced</button>
               <button id="btnDown" class="btn1">-</button>
               <span class="btn1" id="transposeLabel">Transpose: 0</span>
               <button id="btnUp" class="btn1">+</button>
               <button id="btnReset" class="btn1">Reset</button>
+              <!-- <button id="btnTone" class="btn1">Tone</button> -->
+              <span id="toneOut" class="btn1">Tone: —</span>
             </div>
           <div class="sliderRow">
             <label class="label">
@@ -78,7 +82,7 @@
         </section>
         
         <section class="songBox">
-          <p>Notes: Mỗi ô là một nốt đơn</p>
+          <p id="notesHint">Notes:</p>
           <div id="songRoot">
            
           </div>

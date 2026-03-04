@@ -9,24 +9,26 @@
     "timeSigTop": 2,
     "timeSigBottom": 4,
     "meterMode": "simple",
+    "key": "C",
+    "scale": "major",
     "lines": [
       { "section": "ĐIỆP KHÚC", "id": "section1" },
 
       {
         "tokens": [
-          { "lyric": "Mừng", "chord": "C", "beatIndex": 1 },
-          { "lyric": "tết", "chord": null, "beatIndex": 1 },
-          { "lyric": "đến", "chord": " ", "beatIndex": 2 },
-          { "lyric": "vạn lộc", "chord": null, "beatIndex": 2 }
+          { "lyric": "Mừng", "chordBasic": "C",  "chordAdv": "Cmaj7", "beatIndex": 1 },
+          { "lyric": "tết",  "chordBasic": null, "chordAdv": null,   "beatIndex": 1 },
+          { "lyric": "đến",  "chordBasic": " ",  "chordAdv": " ",    "beatIndex": 2 },
+          { "lyric": "vạn lộc", "chordBasic": null, "chordAdv": null, "beatIndex": 2 }
           
         ]
       },
       {
         "tokens": [
-          { "lyric": "đến", "chord": "G", "beatIndex": 1 },
-          { "lyric": "nhà", "chord": null, "beatIndex": 1 },
-          { "lyric": "nhà", "chord": " ", "beatIndex": 2 },
-          { "lyric": "cánh mai", "chord": null, "beatIndex": 2 }
+          { "lyric": "đến", "chordBasic": "G","chordAdv": "G7", "beatIndex": 1 },
+          { "lyric": "nhà", "chordBasic": null, "chordAdv": null,  "beatIndex": 1 },
+          { "lyric": "nhà", "chordBasic": " ", "chordAdv": " ",  "beatIndex": 2 },
+          { "lyric": "cánh mai", "chordBasic": null,"chordAdv": null,  "beatIndex": 2 }
           
         ]
       },
@@ -192,11 +194,13 @@
     "timeSigTop": 4,
     "timeSigBottom": 4,
     "meterMode": "simple",
+    "key": "F",
+    "scale": "major",
     "lines": [
       { "section": "VERSE", "id": "v1" },
       {
         "tokens": [
-          { "lyric": "Đã", "chord": "Am", "beatIndex": 1 },
+          { "lyric": "Mừng", "chordBasic": "C",  "chordAdv": "Cmaj7", "beatIndex": 1 },
           { "lyric": "đủ", "chord": null, "beatIndex": 1 },
           { "lyric": "rồi", "chord": " ", "beatIndex": 2 },
           { "lyric": "em", "chord": null, "beatIndex": 2 }

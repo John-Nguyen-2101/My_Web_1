@@ -67,6 +67,7 @@
   .btnPlay:hover {
     background: rgb(131, 131, 236);
   }
+  .btn1.is-active { outline: 2px solid rgba(120,120,255,.55); }
   
   .is-stop {
     background: rgb(24, 31, 232);
