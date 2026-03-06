@@ -145,6 +145,29 @@
       
         <div class="hint" id="scoreHint"></div>
       </section>
+      <section class="toolCard">
+        <h2 class="h2">Chord Ear Training</h2>
+      
+        <div class="row actions">
+          <button id="chordListenBtn" class="btn2 btnPrimary">🔊 Listen</button>
+          <button id="chordShowBtn" class="btn2 btnGhost">Show</button>
+          <button id="chordHideBtn" class="btn2 btnGhost">Hide</button>
+        </div>
+      
+        <div class="row" style="margin-top:15px;">
+          <span class="pill" id="chordDisplay">???</span>
+        </div>
+      
+        <div class="row actions" style="margin-top:15px;">
+          <button id="chordPrevBtn" class="btn2 btnGhost">⬅ Prev</button>
+          <button id="chordNextBtn" class="btn2 btnGhost">Next ➡</button>
+          <button id="chordResetBtn" class="btn2 btnGhost">Reset</button>
+        </div>
+      
+        <div class="row actions" style="margin-top:20px; flex-wrap: wrap;" id="chordGuessArea"></div>
+      
+        <div class="hint" id="chordScoreHint"></div>
+      </section>
     </main>
 
     <!-- Footer -->
@@ -167,5 +190,6 @@
     <script src="../JS/main.js"></script>
     <script src="../JS/metronome.js"></script>
     <script src="../JS/note-trainer.js"></script>
+    <script src="../JS/chord-trainer.js"></script>
   </body>
 </html>

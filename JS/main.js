@@ -19,7 +19,22 @@ document.addEventListener("DOMContentLoaded", () => {
     if (yearEl) yearEl.textContent = new Date().getFullYear();
   
     // ====== Helpers ======
-    const safeLink = (href) => (href && href.trim() ? href : "#");
+    function safeLink(href) {
+      const s = String(href || "").trim();
+      if (!s) return "#";
+    
+      const allowed =
+        s.startsWith("http://") ||
+        s.startsWith("https://") ||
+        s.startsWith("mailto:") ||
+        s.startsWith("tel:") ||
+        s.startsWith("/") ||
+        s.startsWith("./") ||
+        s.startsWith("../") ||
+        s.startsWith("#");
+    
+      return allowed ? s : "#";
+    }
     const escapeHTML = (s) =>
       String(s ?? "")
         .replaceAll("&", "&amp;")
