@@ -78,6 +78,22 @@
     cursor: pointer;
     padding: 10px;
   }
+  /* video chord button  */
+  .videoToneBar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-bottom: 12px;
+  }
+  
+  #videoToneLabel{
+    cursor: default;
+    min-width: 170px;
+    text-align: center;
+  }
   
   /* beat chips */
 .beatBox {

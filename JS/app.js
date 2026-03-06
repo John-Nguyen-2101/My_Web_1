@@ -85,12 +85,31 @@ let currentBeatRef = 1;
   let transpose = 0;
 
 const NOTE_SHARPS = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"];
+let mainVideo, videoPrev, videoNext, videoToneLabel;
+
+const videoList = [
+  { tone: "C / Am", embed: "https://www.youtube.com/embed/Vw5d4uKVT-4?rel=0" },
+  { tone: "C# / A#m", embed: "https://www.youtube.com/embed/VIDEO_ID_2?rel=0" },
+  { tone: "D / Bm", embed: "https://www.youtube.com/embed/VIDEO_ID_3?rel=0" },
+  { tone: "D# / Cm", embed: "https://www.youtube.com/embed/VIDEO_ID_4?rel=0" },
+  { tone: "E / C#m", embed: "https://www.youtube.com/embed/VIDEO_ID_5?rel=0" },
+  { tone: "F / Dm", embed: "https://www.youtube.com/embed/VIDEO_ID_6?rel=0" },
+  { tone: "F# / D#m", embed: "https://www.youtube.com/embed/VIDEO_ID_7?rel=0" },
+  { tone: "G / Em", embed: "https://www.youtube.com/embed/VIDEO_ID_8?rel=0" },
+  { tone: "G# / Fm", embed: "https://www.youtube.com/embed/VIDEO_ID_9?rel=0" },
+  { tone: "A / F#m", embed: "https://www.youtube.com/embed/VIDEO_ID_10?rel=0" },
+  { tone: "A# / Gm", embed: "https://www.youtube.com/embed/VIDEO_ID_11?rel=0" },
+  { tone: "B / G#m", embed: "https://www.youtube.com/embed/VIDEO_ID_12?rel=0" }
+];
 
 function transposeRoot(root, semis) {
-  const idx = NOTE_SHARPS.indexOf(root);
+  const normalized = FLAT_TO_SHARP[root] || root;
+  const idx = NOTE_SHARPS.indexOf(normalized);
   if (idx === -1) return root;
+
   let newIdx = (idx + semis) % 12;
   if (newIdx < 0) newIdx += 12;
+
   return NOTE_SHARPS[newIdx];
 }
 
@@ -154,6 +173,34 @@ function getTokenChord(t) {
 
   if (chordMode === "adv") return adv ?? basic; // thiếu adv thì fallback basic
   return basic;
+}
+function mod(n, m) {
+  return ((n % m) + m) % m;
+}
+
+const FLAT_TO_SHARP = {
+  Db: "C#",
+  Eb: "D#",
+  Gb: "F#",
+  Ab: "G#",
+  Bb: "A#"
+};
+
+function renderVideoByTranspose() {
+  if (!mainVideo || !videoToneLabel || !demoSong) return;
+
+  const toneRaw = demoSong.tone ?? demoSong.key ?? "C";
+  const root = chordRoot(toneRaw);
+  const normalizedRoot = FLAT_TO_SHARP[root] || root;
+
+  const baseIndex = NOTE_SHARPS.indexOf(normalizedRoot);
+  const safeBaseIndex = baseIndex === -1 ? 0 : baseIndex;
+
+  const index = mod(safeBaseIndex + transpose, 12);
+  const item = videoList[index];
+
+  mainVideo.src = item.embed;
+  videoToneLabel.textContent = `Video tone: ${item.tone}`;
 }
   // ------------------------ RENDER HELPERS ------------------------
   function beatClickLevel(b) {
@@ -575,9 +622,11 @@ async function loadSong() {
       alert("Không load được songs.json. Kiểm tra đường dẫn và mở bằng Live Server/GitHub Pages.");
     }
   }
-  // ------------------------ INIT ------------------------
   function init() {
-
+    mainVideo = document.getElementById("mainVideo");
+    videoPrev = document.getElementById("videoPrev");
+    videoNext = document.getElementById("videoNext");
+    videoToneLabel = document.getElementById("videoToneLabel");
     elTitle = document.getElementById("songTitle");
     elAuthor = document.getElementById("songAuthor");
     elStyle = document.getElementById("songStyle");
@@ -590,86 +639,94 @@ async function loadSong() {
     btnTone = document.getElementById("btnTone");
     elToneOut = document.getElementById("toneOut");
     btnPlay = document.getElementById("btnPlay");
-   
   
     bpmRange = document.getElementById("bpmRange");
     bpmLabel = document.getElementById("bpmLabel");
-   
-    btnPlay.addEventListener("click", () => {
-      if (isPlaying) stop();     // đang chạy thì bấm sẽ stop
-      else start();              // đang dừng thì bấm sẽ start
-    });
   
+    btnPlay.addEventListener("click", () => {
+      if (isPlaying) stop();
+      else start();
+    });
   
     renderMeta();
     renderBeatChips();
     renderNotesHint();
-    renderSong();
     setPlayUi(false);
-    renderTone();
+  
     bpmRange.addEventListener("input", (e) => {
       bpm = Number(e.target.value);
       bpmLabel.textContent = String(bpm);
       elBpmNow.textContent = `⏱ Đang tập: ${bpm} BPM`;
       restartInterval();
     });
+  
     function renderTone() {
       if (!elToneOut) return;
-      const { tone, lastChord } = getSongToneDisplay();
+      const { tone } = getSongToneDisplay();
       elToneOut.textContent = `Tone: ${tone}`;
     }
-    // changing chords
+  
     const btnBasic = document.getElementById("btnBasic");
     const btnAdv = document.getElementById("btnAdv");
-
-    function setChordMode(mode){
+  
+    function setChordMode(mode) {
       chordMode = mode;
       localStorage.setItem("chordMode", mode);
-    
+  
       btnBasic?.classList.toggle("is-active", mode === "basic");
       btnAdv?.classList.toggle("is-active", mode === "adv");
-    
+  
       renderSong();
       renderTone();
     }
-
+  
     btnBasic?.addEventListener("click", () => setChordMode("basic"));
     btnAdv?.addEventListener("click", () => setChordMode("adv"));
     btnTone?.addEventListener("click", renderTone);
     setChordMode(chordMode);
-      // --- TRANSPOSE CONTROLS ---
-      btnUp = document.getElementById("btnUp");
-      btnDown = document.getElementById("btnDown");
-      btnReset = document.getElementById("btnReset");
-      transposeLabel = document.getElementById("transposeLabel");
-
-  function updateTransposeLabel() {
-    if (transposeLabel) transposeLabel.textContent = `🎚 Transpose: ${transpose}`;
-  }
-
-  btnUp?.addEventListener("click", () => {
-    transpose += 1;
-    updateTransposeLabel();
-    renderSong();
-    renderTone();
-  });
-
-  btnDown?.addEventListener("click", () => {
-    transpose -= 1;
-    updateTransposeLabel();
-    renderSong();
-    renderTone();
-  });
-
-  btnReset?.addEventListener("click", () => {
-    transpose = 0;
-    updateTransposeLabel();
-    renderSong();
-    renderTone();
-  });
-
-  updateTransposeLabel();
-  }
   
+    btnUp = document.getElementById("btnUp");
+    btnDown = document.getElementById("btnDown");
+    btnReset = document.getElementById("btnReset");
+    transposeLabel = document.getElementById("transposeLabel");
+  
+    function updateTransposeLabel() {
+      if (transposeLabel) transposeLabel.textContent = `🎚 Transpose: ${transpose}`;
+    }
+  
+    function applyTransposeUi() {
+      updateTransposeLabel();
+      renderSong();
+      renderTone();
+      renderVideoByTranspose();
+    }
+  
+    btnUp?.addEventListener("click", () => {
+      transpose += 1;
+      applyTransposeUi();
+    });
+  
+    btnDown?.addEventListener("click", () => {
+      transpose -= 1;
+      applyTransposeUi();
+    });
+  
+    btnReset?.addEventListener("click", () => {
+      transpose = 0;
+      applyTransposeUi();
+    });
+  
+    videoPrev?.addEventListener("click", () => {
+      transpose -= 1;
+      applyTransposeUi();
+    });
+  
+    videoNext?.addEventListener("click", () => {
+      transpose += 1;
+      applyTransposeUi();
+    });
+  
+    applyTransposeUi();
+  }
   document.addEventListener("DOMContentLoaded", loadSong);
   
