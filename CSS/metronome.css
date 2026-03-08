@@ -304,3 +304,20 @@
     margin-bottom: 8px;
   }
 }
+/* chord app  */
+.chordOption {
+  min-width: 140px;
+  text-align: center;
+}
+
+.chordOption.correct {
+  background: rgba(20, 201, 36, 0.48);
+}
+
+.chordOption.wrong {
+  background: rgba(245, 16, 16, 0.48);
+}
+
+.chordOption.answer {
+  outline: 2px solid rgba(255, 214, 10, 0.95);
+}

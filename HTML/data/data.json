@@ -12,22 +12,22 @@
   },
   "tools": [
     {
-      "title": "Tra cứu hợp âm + Metronome",
-      "desc": "Tìm hợp âm theo bài + chạy metronome, phù hợp để tập nhịp khi đệm hát.",
-      "status": "Live/Update",
+      "title": "Tra cứu hợp âm ",
+      "desc": "Hợp âm kết hợp metronome, phù hợp để tập nhịp khi đệm hát.",
+      "status": "Đã có sẵn",
       "link": "../HTML/chords.html"
     },
     {
-      "title": "Luyện nghe hợp âm",
-      "desc": "Bài tập nhận diện quality: maj/min/dim/aug/7... (sắp có).",
-      "status": "Coming soon",
-      "link": "#"
+      "title": "Luyện nghe nốt nhạc",
+      "desc": "Bài tập nhận diện nốt nhạc.",
+      "status": "Đã có sẵn",
+      "link": "../HTML/metronome.html"
     },
     {
-      "title": "Mixing & Master",
-      "desc": "Tổng hợp bài học + checklist + bài tập thực hành (sắp có).",
-      "status": "Coming soon",
-      "link": "#"
+      "title": "Metronome",
+      "desc": "Tổng hợp bài học + checklist + bài tập thực hành.",
+      "status": "Đã có sẵn",
+      "link": "../HTML/metronome.html"
     }
   ],
   "albums": [
@@ -53,7 +53,7 @@
       "desc": "Coming soon 2026. Jb-Lufe feat. Fei Nguyen, Quynh Trang",
       "chip": "Single",
       "link": "#",
-      "cover":"../IMG/album3.jpeg"
+      "cover":"../IMG/album3.jpg"
     }
   ],
   "products": [
