@@ -28,7 +28,8 @@ let countIn = null;
 
 let beat = 1;
 let activeLine = 0;
-
+let activeStep = 0;   // step đang chạy trên metronome chip
+let playback = null;  // config playback của bài hiện tại
 let timerId = null;
 
 let phaseRef = "idle";
@@ -43,6 +44,77 @@ let currentBeatRef = 1;
       return { beatsPerBar: 6, accentStrong: [1], accentWeak: [4], timeSigLabel: "6/8 (đếm 6 phách ♪)" };
     }
     return { beatsPerBar: song.timeSigTop, accentStrong: [1], accentWeak: [], timeSigLabel: `${song.timeSigTop}/${song.timeSigBottom}` };
+  }
+  function getPlaybackConfig(song, bpmNow) {
+    const top = song?.timeSigTop;
+    const bottom = song?.timeSigBottom;
+  
+    // 2/4: 4 ô, mỗi ô = 1 nốt đơn
+    if (top === 2 && bottom === 4) {
+      return {
+        stepsPerBar: 4,
+        stepToBeatMap: [1, 1, 2, 2],
+        labelForStep: (i) => ["1", "&", "2", "&"][i] || "",
+        kindForStep: (i) => {
+          if (i === 0) return "strong";
+          if (i === 2) return "weak";
+          return "normal";
+        },
+        msPerStep: (60000 / bpmNow) / 2
+      };
+    }
+  
+    // 3/4: 3 ô, mỗi ô = 1 nốt đen
+    if (top === 3 && bottom === 4) {
+      return {
+        stepsPerBar: 3,
+        stepToBeatMap: [1, 2, 3],
+        labelForStep: (i) => String(i + 1),
+        kindForStep: (i) => {
+          if (i === 0) return "strong";
+          return "normal";
+        },
+        msPerStep: 60000 / bpmNow
+      };
+    }
+  
+    // 4/4: 4 ô, mỗi ô = 1 nốt đen
+    if (top === 4 && bottom === 4) {
+      return {
+        stepsPerBar: 4,
+        stepToBeatMap: [1, 2, 3, 4],
+        labelForStep: (i) => String(i + 1),
+        kindForStep: (i) => {
+          if (i === 0) return "strong";
+          return "normal";
+        },
+        msPerStep: 60000 / bpmNow
+      };
+    }
+  
+    // 6/8: 6 ô, chia 2 beat lớn kiểu liên 3
+    if (top === 6 && bottom === 8) {
+      return {
+        stepsPerBar: 6,
+        stepToBeatMap: [1, 1, 1, 2, 2, 2],
+        labelForStep: (i) => ["1", "tri", "let", "2", "tri", "let"][i] || "",
+        kindForStep: (i) => {
+          if (i === 0) return "strong";
+          if (i === 3) return "weak";
+          return "normal";
+        },
+        msPerStep: (60000 / bpmNow) / 2
+      };
+    }
+  
+    // fallback
+    return {
+      stepsPerBar: top || 4,
+      stepToBeatMap: Array.from({ length: top || 4 }, (_, i) => i + 1),
+      labelForStep: (i) => String(i + 1),
+      kindForStep: (i) => (i === 0 ? "strong" : "normal"),
+      msPerStep: 60000 / bpmNow
+    };
   }
   
   // ------------------------ AUDIO ------------------------
@@ -90,14 +162,14 @@ let mainVideo, videoPrev, videoNext, videoToneLabel;
 const videoList = [
   { tone: "C / Am", embed: "https://www.youtube.com/embed/Vw5d4uKVT-4?rel=0" },
   { tone: "C# / A#m", embed: "https://www.youtube.com/embed/VIDEO_ID_2?rel=0" },
-  { tone: "D / Bm", embed: "https://www.youtube.com/embed/VIDEO_ID_3?rel=0" },
+  { tone: "D / Bm", embed: "https://www.youtube.com/embed/7SuX6oHttMk?rel=0" },
   { tone: "D# / Cm", embed: "https://www.youtube.com/embed/VIDEO_ID_4?rel=0" },
   { tone: "E / C#m", embed: "https://www.youtube.com/embed/VIDEO_ID_5?rel=0" },
-  { tone: "F / Dm", embed: "https://www.youtube.com/embed/VIDEO_ID_6?rel=0" },
+  { tone: "F / Dm", embed: "https://www.youtube.com/embed/f90ZNZVth6c?rel=0" },
   { tone: "F# / D#m", embed: "https://www.youtube.com/embed/VIDEO_ID_7?rel=0" },
-  { tone: "G / Em", embed: "https://www.youtube.com/embed/VIDEO_ID_8?rel=0" },
+  { tone: "G / Em", embed: "https://www.youtube.com/embed/XgYDU24xea8?rel=0" },
   { tone: "G# / Fm", embed: "https://www.youtube.com/embed/VIDEO_ID_9?rel=0" },
-  { tone: "A / F#m", embed: "https://www.youtube.com/embed/VIDEO_ID_10?rel=0" },
+  { tone: "A / F#m", embed: "https://www.youtube.com/embed/HcCfr9c8o2o?rel=0" },
   { tone: "A# / Gm", embed: "https://www.youtube.com/embed/VIDEO_ID_11?rel=0" },
   { tone: "B / G#m", embed: "https://www.youtube.com/embed/VIDEO_ID_12?rel=0" }
 ];
@@ -265,11 +337,13 @@ function renderVideoByTranspose() {
   }
   
   function renderBeatChips() {
+    if (!elBeatBox || !playback) return;
+  
     elBeatBox.innerHTML = "";
-    for (let i = 1; i <= beatsPerBar; i++) {
+    for (let i = 0; i < playback.stepsPerBar; i++) {
       const chip = document.createElement("span");
-      chip.className = "beatChip" + (beat === i ? " active" : "");
-      chip.textContent = String(i);
+      chip.className = "beatChip" + (activeStep === i ? " active" : "");
+      chip.textContent = playback.labelForStep(i);
       elBeatBox.appendChild(chip);
     }
   }
@@ -287,12 +361,12 @@ function renderVideoByTranspose() {
     wrap.appendChild(title);
   
     // show count-in ở section đầu tiên gặp được trong bài
-    if (phase === "countin" && countIn !== null && !countInShown) {
+    if (phase === "countin" && countIn && !countInShown) {
       const ci = document.createElement("div");
       ci.className = "sectionCountIn";
       ci.textContent = String(countIn);
       wrap.appendChild(ci);
-  
+    
       countInShown = true;
     }
   
@@ -424,66 +498,76 @@ function renderVideoByTranspose() {
   
   // ------------------------ TICK ------------------------
   function tick() {
-    const ctx = ensureAudioContext();
+    if (!playback) return;
   
-    // PHASE COUNT-IN
+    beat = playback.stepToBeatMap[activeStep] ?? 1;
+  
+    // ===== COUNT-IN =====
     if (phaseRef === "countin") {
-      click(beatClickLevel(currentBeatRef));
-      beat = currentBeatRef;
+      click(playback.kindForStep(activeStep));
       renderBeatChips();
   
-      currentBeatRef = nextBeat(currentBeatRef);
+      countIn = getCountInDisplay(playback, activeStep);
+      renderSong();
   
-      remainingRef -= 1;
-      if (remainingRef > 0) {
-        countIn = remainingRef;
-        renderSong();
+      const isLastCountStep = activeStep >= playback.stepsPerBar - 1;
+  
+      if (isLastCountStep) {
+        // giữ nguyên step cuối thêm 1 khoảng thời gian
+        phase = "countin-end";
+        phaseRef = "countin-end";
         return;
       }
   
-      // into play
+      activeStep += 1;
+      return;
+    }
+  
+    // ===== CHUYỂN TỪ COUNT-IN SANG PLAY =====
+    if (phaseRef === "countin-end") {
       countIn = null;
       phase = "play";
       phaseRef = "play";
   
-      currentBeatRef = 1;
-      beat = 1;
+      activeStep = 0;
+      beat = playback.stepToBeatMap[0] ?? 1;
   
       posRef = 0;
       activeLine = tokenLineIndexes[0] ?? 0;
   
-      click("strong");
+      click(playback.kindForStep(activeStep));
       renderBeatChips();
       renderSong();
       autoScrollToActiveLine();
+  
+      activeStep = (activeStep + 1) % playback.stepsPerBar;
+      beat = playback.stepToBeatMap[activeStep] ?? 1;
       return;
     }
   
-    // PHASE PLAY
+    // ===== PLAY =====
     if (phaseRef === "play") {
-      if (currentBeatRef === beatsPerBar) {
-        // nếu đang ở bar cuối -> dừng và về đầu
+      click(playback.kindForStep(activeStep));
+      renderBeatChips();
+      renderSong();
+  
+      const isLastStepOfBar = activeStep === playback.stepsPerBar - 1;
+  
+      if (isLastStepOfBar) {
         if (posRef >= tokenLineIndexes.length - 1) {
           stopAndResetToStart();
           return;
         }
-      
-        // còn bar tiếp theo thì nhảy bình thường
+  
         posRef += 1;
         activeLine = tokenLineIndexes[posRef];
         autoScrollToActiveLine();
       }
   
-      currentBeatRef = nextBeat(currentBeatRef);
-  
-      beat = currentBeatRef;
-      click(beatClickLevel(currentBeatRef));
-  
-      renderBeatChips();
-      renderSong();
+      activeStep = (activeStep + 1) % playback.stepsPerBar;
+      beat = playback.stepToBeatMap[activeStep] ?? 1;
     }
   }
-  
   // ------------------------ CONTROLS ------------------------
   async function start() {
     const ctx = ensureAudioContext();
@@ -496,24 +580,31 @@ function renderVideoByTranspose() {
     phase = "countin";
     phaseRef = "countin";
   
-    remainingRef = beatsPerBar;
-    countIn = beatsPerBar;
+    playback = getPlaybackConfig(demoSong, bpm);
+  
+    countIn = null;
+    remainingRef = 0;
   
     currentBeatRef = 1;
     beat = 1;
-  
+    activeStep = 0;
     posRef = 0;
     activeLine = tokenLineIndexes[0] ?? 0;
     lastScrolledLine = -1;
-    
-  
-    click("strong");
   
     renderBeatChips();
     renderSong();
     autoScrollToActiveLine();
   
-    timerId = window.setInterval(tick, 60000 / bpm);
+    tick(); // chạy ngay step đầu tiên
+    timerId = window.setInterval(tick, playback.msPerStep);
+  }
+  function getCountInDisplay(playback, stepIndex) {
+    const beatNum = playback.stepToBeatMap[stepIndex] ?? 1;
+    const prevBeat = stepIndex > 0 ? playback.stepToBeatMap[stepIndex - 1] : null;
+    const isFirstStepOfBeat = stepIndex === 0 || beatNum !== prevBeat;
+  
+    return isFirstStepOfBeat ? String(beatNum) : "";
   }
   function stopAndResetToStart() {
     clearTimer();
@@ -528,6 +619,7 @@ function renderVideoByTranspose() {
   
     beat = 1;
     currentBeatRef = 1;
+    activeStep = 0;
   
     posRef = 0;
     activeLine = tokenLineIndexes[0] ?? 0;
@@ -551,7 +643,7 @@ function renderVideoByTranspose() {
   
     beat = 1;
     currentBeatRef = 1;
-  
+    activeStep = 0;
     posRef = 0;
     activeLine = tokenLineIndexes[0] ?? 0;
     lastScrolledLine = -1;
@@ -578,50 +670,58 @@ scrollTopBtn.addEventListener("click", () => {
   });
 });
   
-  function restartInterval() {
-    if (!isPlaying) return;
-    clearTimer();
-    timerId = window.setInterval(tick, 60000 / bpm);
-  }
+function restartInterval() {
+  if (!isPlaying) return;
+  clearTimer();
+  playback = getPlaybackConfig(demoSong, bpm);
+  timerId = window.setInterval(tick, playback.msPerStep);
+}
 //   loadSong(); // load song ngay khi script chạy
 
 async function loadSong() {
-    try {
-      const res = await fetch("..//HTML/data/songs.json"); // ✅ path tính từ home.html
-      if (!res.ok) throw new Error(`Fetch songs.json failed: ${res.status}`);
-  
-      const allSongs = await res.json();
-      const params = new URLSearchParams(window.location.search);
-      const songId = (params.get("song") || "").trim();
+  try {
+    const allSongs = songs;
 
-      demoSong = songId
-        ? allSongs.find((s) => s.id === songId)
-        : allSongs[0]; // fallback nếu không có ?song=
+    const params = new URLSearchParams(window.location.search);
+    const songId = (params.get("song") || "").trim();
 
-      if (!demoSong) {
-        alert("Không tìm thấy bài hát: " + songId);
-        return;
-      }
-  
-      // ✅ set các biến phụ thuộc demoSong tại đây
-      meter = getMeterConfig(demoSong);
-      beatsPerBar = meter.beatsPerBar;
-  
-      bpm = demoSong.bpm;
-  
-      tokenLineIndexes = demoSong.lines
-        .map((l, i) => (l.tokens ? i : -1))
-        .filter((i) => i !== -1);
-  
-      posRef = 0;
-      activeLine = tokenLineIndexes[0] ?? 0;
-  
-      init(); // ✅ chỉ init sau khi đã có demoSong
-    } catch (err) {
-      console.error(err);
-      alert("Không load được songs.json. Kiểm tra đường dẫn và mở bằng Live Server/GitHub Pages.");
+    demoSong = songId
+      ? allSongs.find((s) => s.id === songId)
+      : allSongs[0];
+
+    if (!demoSong) {
+      alert("Không tìm thấy bài hát: " + songId);
+      return;
     }
+
+    if (demoSong.quickText) {
+      const gridConfig = getBarGridConfig(demoSong);
+    
+      demoSong.lines = parseQuickLines(demoSong.quickText, {
+        cellsPerBar: gridConfig.cellsPerBar,
+        cellToBeatMap: gridConfig.cellToBeatMap,
+        includeSpacerChord: true
+      });
+    }
+
+    meter = getMeterConfig(demoSong);
+    beatsPerBar = meter.beatsPerBar;
+    bpm = demoSong.bpm;
+    playback = getPlaybackConfig(demoSong, bpm);
+
+    tokenLineIndexes = demoSong.lines
+      .map((l, i) => (l.tokens ? i : -1))
+      .filter((i) => i !== -1);
+
+    posRef = 0;
+    activeLine = tokenLineIndexes[0] ?? 0;
+
+    init();
+  } catch (err) {
+    console.error(err);
+    alert("Không load được bài hát.");
   }
+}
   function init() {
     mainVideo = document.getElementById("mainVideo");
     videoPrev = document.getElementById("videoPrev");
