@@ -115,11 +115,7 @@
   
     // Mock songs list (anh có thể thay bằng fetch songs.json sau)
     // Link tạm thời để "#"; sau này anh đổi thành: `../HTML/chord.html?song=${encodeURIComponent(s.id)}`
-    const songs = [
-      { id: "Ngayxuanlpxv", title: "Ngày xuân long phụng xum vầy", author: "Quang Minh" },
-      { id: "da-du-roi", title: "Đã đủ rồi", author: "Jb-Lufe"},
-      
-    ];
+    const songs = window.SONG_LIST || [];
   
     // -------------------- Renderers --------------------
     function renderTools(list) {
@@ -200,9 +196,7 @@
               `${s.author || ""}${s.bpm ? " • " + s.bpm + " BPM" : ""}${s.timeSig ? " • " + s.timeSig : ""}`
             );
       
-            // 👇 BUILD LINK THEO ID
             const link = `../HTML/chord.html?song=${encodeURIComponent(s.id)}`;
-      
             const isActive = activeId && s.id === activeId;
       
             return `

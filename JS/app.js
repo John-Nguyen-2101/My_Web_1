@@ -680,23 +680,24 @@ function restartInterval() {
 
 async function loadSong() {
   try {
-    const allSongs = songs;
-
     const params = new URLSearchParams(window.location.search);
     const songId = (params.get("song") || "").trim();
 
-    demoSong = songId
-      ? allSongs.find((s) => s.id === songId)
-      : allSongs[0];
+    if (!songId) {
+      alert("Thiếu mã bài hát trên URL.");
+      return;
+    }
+
+    demoSong = await loadSongScriptById(songId);
 
     if (!demoSong) {
-      alert("Không tìm thấy bài hát: " + songId);
+      alert("Không tìm thấy dữ liệu bài hát: " + songId);
       return;
     }
 
     if (demoSong.quickText) {
       const gridConfig = getBarGridConfig(demoSong);
-    
+
       demoSong.lines = parseQuickLines(demoSong.quickText, {
         cellsPerBar: gridConfig.cellsPerBar,
         cellToBeatMap: gridConfig.cellToBeatMap,

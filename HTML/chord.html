@@ -57,7 +57,10 @@
     
         <section class="controls">
           <div class="row">
-            <button id="btnPlay" class=" btnPlay"><i class="fa-solid fa-play"></i> Start</button>
+            <button id="btnPlay" class="btnPlay">
+              <i class="fa-solid fa-play"></i>
+              <span>Start</span>
+            </button>
             
     
             <div id="beatBox" class="beatBox"></div>
@@ -65,13 +68,14 @@
           <div class="row toneRow">
             <button id="btnBasic" class="btn1 is-active">Basic</button>
             <button id="btnAdv" class="btn1">Advanced</button>
-              <button id="btnDown" class="btn1">-</button>
-              <span class="btn1" id="transposeLabel">Transpose: 0</span>
-              <button id="btnUp" class="btn1">+</button>
-              <button id="btnReset" class="btn1">Reset</button>
-              <!-- <button id="btnTone" class="btn1">Tone</button> -->
-              <span id="toneOut" class="btn1">Tone: —</span>
-            </div>
+            <button id="btnDown" class="btn1" type="button">−</button>
+            <span class="btn1" id="transposeLabel">Transpose: 0</span>
+            <button id="btnUp" class="btn1" type="button">+</button>
+            <button id="btnReset" class="btn1" type="button">Reset</button>
+            <span id="toneOut" class="btn1">Tone: —</span>
+
+          </div>
+
           <div class="sliderRow">
             <label class="label">
               Tempo: <b><span id="bpmLabel">80</span> BPM</b>
@@ -138,8 +142,8 @@
       <i class="fa-solid fa-arrow-up"></i>
     </button>
     <script src="../JS/layout.js"></script>
-    <script src="../HTML/data/songs.js"></script>
     <script src="../JS/quickParser.js"></script>
+    <script src="../JS/song-loader.js"></script>
     <script src="../JS/app.js"></script>
     
   </body>
