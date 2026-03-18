@@ -55,9 +55,10 @@
   }
   
   .contact-grid {
-    display: grid;
+    display: block;
     grid-template-columns: 1.3fr 0.9fr;
     gap: 24px;
+    
   }
   
   .contact-card {
@@ -66,6 +67,7 @@
     border-radius: 24px;
     padding: 28px;
     box-shadow: 0 10px 30px rgba(16, 24, 40, 0.05);
+    /* margin: 0 auto; */
   }
   
   .contact-card h2 {

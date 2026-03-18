@@ -5,7 +5,7 @@ function loadSongScriptById(songId) {
       return;
     }
 
-    const filePath = `../HTML/data/songs/song-${songId}.js`;
+    const filePath = `../../HTML/data/songs/song-${songId}.js`;
 
     window.SONG_DATA = null;
 

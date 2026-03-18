@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      const res = await fetch("./posts.json", { cache: "no-store" });
+      const res = await fetch("/HTML/posts.json", { cache: "no-store" });
       if (!res.ok) throw new Error("Fetch posts.json failed: " + res.status);
 
       const posts = await res.json();

@@ -15,19 +15,19 @@
       "title": "Tra cứu hợp âm ",
       "desc": "Hợp âm kết hợp metronome, phù hợp để tập nhịp khi đệm hát.",
       "status": "Đã có sẵn",
-      "link": "../HTML/chords.html"
+      "link": "/HTML/chords/index.html"
     },
     {
       "title": "Luyện nghe nốt nhạc",
       "desc": "Bài tập nhận diện nốt nhạc.",
       "status": "Đã có sẵn",
-      "link": "../HTML/metronome.html"
+      "link": "/HTML/tools/index.html"
     },
     {
       "title": "Metronome",
       "desc": "Tổng hợp bài học + checklist + bài tập thực hành.",
       "status": "Đã có sẵn",
-      "link": "../HTML/metronome.html"
+      "link": "/HTML/tools/index.html"
     }
   ],
   "albums": [
@@ -62,8 +62,8 @@
     { "title": "Course Bundle", "desc": "Mock khóa học/ebook sau này.", "chip": "Digital", "link": "#" }
   ],
   "posts": [
-    { "title": "Passing chord là gì?", "desc": "Giải thích dễ hiểu + ví dụ thực tế.", "chip": "Harmony", "link": "../HTML/post.html?slug=passing-chord-la-gi" },
-    { "title": "Cách đệm hát không bị lạc tone", "desc": "Checklist tai nghe + hợp âm + nhịp.", "chip": "Guitar", "link": "../HTML/post.html?slug=dem-hat-khong-bi-lac-tone" },
+    { "title": "Passing chord là gì?", "desc": "Giải thích dễ hiểu + ví dụ thực tế.", "chip": "Harmony", "link": "../HTML/Blog/index.html?slug=passing-chord-la-gi" },
+    { "title": "Cách đệm hát không bị lạc tone", "desc": "Checklist tai nghe + hợp âm + nhịp.", "chip": "Guitar", "link": "../HTML/Blog/index.html?slug=dem-hat-khong-bi-lac-tone" },
     { "title": "Attack/Decay/Sustain/Release", "desc": "Hiểu ADSR để mix nhạc tốt hơn.", "chip": "Mixing", "link": "#" }
   ]
 }

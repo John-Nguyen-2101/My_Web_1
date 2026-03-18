@@ -318,7 +318,7 @@
 .icon-btn:hover{ border-color: rgba(255,255,255,.18); }
 
 .hero-card{
-  height: 300px;
+  height: 310px;
   border-radius: var(--radius);
   border: 1px solid var(--line);
   background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
@@ -350,7 +350,7 @@
   height: 100%;
   object-fit:cover;
 }
-.hero-card-mini{ margin: 2px 0 0 0; color: var(--muted); font-size: 13px; }
+.hero-card-mini{ margin: 2px 0 0 0; color: var(--muted); font-size: 11px; }
 
 .stat-grid{
   display:grid;

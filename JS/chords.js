@@ -60,19 +60,19 @@
           title: "Luyện nghe nôt nhạc",
           desc: "Bài tập nhận diện pitch của từng nôt trong scale.",
           status: "Đã có sẵn",
-          link: "../HTML/metronome.html"
+          link: "../../HTML/tools/index.html"
         },
         {
           title: "Luyện nghe hợp âm",
           desc: "Bài tập nhận diện quality: maj/min/dim/aug/7...",
           status: "Đã có sẵn",
-          link: "../HTML/metronome.html"
+          link: "../../HTML/tools/index.html"
         },
         {
           title: " Metronome",
           desc: "Máy đếm nhịp đơn giản, có thể tùy chỉnh BPM và time signature.",
           status: "Đã có sẵn",
-          link: "../HTML/metronome.html"
+          link: "../../HTML/tools/index.html"
         }
       ],
       albums: [
@@ -82,7 +82,7 @@
           desc: "Release 27/09/2025. Jb-Lufe",
           chip: "Single",
           link: "https://youtu.be/FgIijOdivPk?si=pOOiFNZazCiZJPTw",
-          cover: "../IMG/album2.jpg"
+          cover: "../../IMG/album2.jpg"
         },
         {
           type: "album",
@@ -90,7 +90,7 @@
           desc: "Release 5/03/2025. Jb-Lufe feat. Fei Nguyen",
           chip: "Single",
           link: "https://youtu.be/m95H8jcECBw?si=gx1znzB-0ylaavEC",
-          cover: "../IMG/album1.jpg"
+          cover: "../../IMG/album1.jpg"
         },
         {
           type: "album",
@@ -98,7 +98,7 @@
           desc: "Coming soon 2026. Jb-Lufe feat. Fei Nguyen, Quynh Trang",
           chip: "Single",
           link: "#",
-          cover: "../IMG/album3.jpg"
+          cover: "../../IMG/album3.jpg"
         }
       ],
       products: [
@@ -196,7 +196,7 @@
               `${s.author || ""}${s.bpm ? " • " + s.bpm + " BPM" : ""}${s.timeSig ? " • " + s.timeSig : ""}`
             );
       
-            const link = `../HTML/chord.html?song=${encodeURIComponent(s.id)}`;
+            const link = `../chords/chord.html?song=${encodeURIComponent(s.id)}`;
             const isActive = activeId && s.id === activeId;
       
             return `
