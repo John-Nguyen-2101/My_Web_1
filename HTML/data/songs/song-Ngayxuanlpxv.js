@@ -12,9 +12,9 @@ window.SONG_DATA = {
   scale: "major",
   quickText: `[ĐIỆP KHÚC]
 C|Cmaj7 : Mừng / Tết / đến / {vạn lộc}
-G|G7 : đến / nhà / nhà /
-Am : Cánh / mai / vàng / {cành đào}
-Em : hồng / thắm / tươi /
+G|G7 : đến / nhà / nhà /{cánh mai}
+Am : Vàng/ {cành đào}/ hồng / thắm
+Em : tươi/  /  /
 
 F : Chúc / cụ / già / {được sống}
 C : lâu / sống / thọ / {cùng con}
@@ -22,27 +22,36 @@ F : cháu / sang / năm / lại
 G : đón / Tết / sang /
 
 C : Và / kính / chúc / {người người}
-G : sẽ / gặp / lành /
-Am : Tết / sau / được / {nhiều lộc}
-Em : hơn / Tết / nay /
+G : sẽ / gặp / lành /{tết sau}
+Am : Được / {nhiều lộc}/ hơn/ tết
+Em : nay/ /  /
 
-F : Tết / đến / đoàn / {tụ cùng}
-C : ở / bên / bếp / hồng
-F : Và / nồi / bánh / chưng
-G : chờ / xanh / Xuân / {đang sang}
+F : {Tết đến}/ đoàn / tụ / {cùng ở}
+C :  Bên / bếp / hồng/{và nồi}
+F : Bánh/ chưng/ xanh / chờ
+G : Xuân / đang/ sang / 
+[Verse]
+C : Cánh / / én / nơi
+G : nơi /  / / {khắp muôn}
+Am : người / người / đi/hái
+Em : Lộc / / / 
 
-C : Cánh / én / nơi / nơi
-G : khắp / phố / người / người
-Am : đi / hái / lộc /
-Em : đẹp / xinh / đất / trời
+F : Đẹp/  / xinh / đất
+C : trời /  / màu / áo
+F : Trắng / tung/ bay / cùng
+G : Muôn/ ngàn / hoa / 
 
-F : màu / áo / trắng / {tung bay}
-C : cùng / muôn / ngàn / hoa
-F : Trong / tiếng / trống / Xuân
-G : long / phụng / về / {đây sum vầy}
+C : Trong / /tiếng /trống 
+G : Xuân / / /long 
+Am : Phụng/ về/ đây/ sum
+Em : Vầy/ / /
 
-C : Phát / lộc / tài / {ở khắp}
-G : nơi / phố / phường /
-Am : Một / năm / mới / {an khang}
-Em : bình / an / bên / nhau`
+F : Phát /lộc/ tài/ {ở khắp} 
+C : nơi /phố /phường/{Một năm} 
+F : mới/ an/ khang (G)/ bình
+C : an /bên/ nhau.
+`
 };
+
+
+ 

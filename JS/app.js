@@ -161,17 +161,17 @@ let mainVideo, videoPrev, videoNext, videoToneLabel;
 
 const videoList = [
   { tone: "C / Am", embed: "https://www.youtube.com/embed/Vw5d4uKVT-4?rel=0" },
-  { tone: "C# / A#m", embed: "https://www.youtube.com/embed/VIDEO_ID_2?rel=0" },
+  { tone: "C# / A#m", embed: "https://www.youtube.com/embed/X66oNOiy5sQ?si=0" },
   { tone: "D / Bm", embed: "https://www.youtube.com/embed/7SuX6oHttMk?rel=0" },
-  { tone: "D# / Cm", embed: "https://www.youtube.com/embed/VIDEO_ID_4?rel=0" },
-  { tone: "E / C#m", embed: "https://www.youtube.com/embed/VIDEO_ID_5?rel=0" },
+  { tone: "D# / Cm", embed: "https://www.youtube.com/embed/xDVMBaj623w?si=0" },
+  { tone: "E / C#m", embed: "https://www.youtube.com/embed/DGNO83LTPxU?si=0" },
   { tone: "F / Dm", embed: "https://www.youtube.com/embed/f90ZNZVth6c?rel=0" },
-  { tone: "F# / D#m", embed: "https://www.youtube.com/embed/VIDEO_ID_7?rel=0" },
+  { tone: "F# / D#m", embed: "https://www.youtube.com/embed/MSVkxAddqNs?si=0" },
   { tone: "G / Em", embed: "https://www.youtube.com/embed/XgYDU24xea8?rel=0" },
-  { tone: "G# / Fm", embed: "https://www.youtube.com/embed/VIDEO_ID_9?rel=0" },
+  { tone: "G# / Fm", embed: "https://www.youtube.com/embed/J5UI0DIMuSk?si=0" },
   { tone: "A / F#m", embed: "https://www.youtube.com/embed/HcCfr9c8o2o?rel=0" },
-  { tone: "A# / Gm", embed: "https://www.youtube.com/embed/VIDEO_ID_11?rel=0" },
-  { tone: "B / G#m", embed: "https://www.youtube.com/embed/VIDEO_ID_12?rel=0" }
+  { tone: "A# / Gm", embed: "https://www.youtube.com/embed/J1gfcPFrc5s?si=0" },
+  { tone: "B / G#m", embed: "https://www.youtube.com/embed/k_HoyvBWFjs?si=0" }
 ];
 
 function transposeRoot(root, semis) {
