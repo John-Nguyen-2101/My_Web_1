@@ -92,25 +92,50 @@ function getBarGridConfig(song) {
   };
 }
 
+function parseInlineCell(cellRaw) {
+  const raw = String(cellRaw || "").trim();
+  if (!raw) {
+    return {
+      lyric: "",
+      chordBasic: null,
+      chordAdv: null
+    };
+  }
+
+  // format: [C] lyric
+  // hoặc: [C|Cmaj7] lyric
+  const m = raw.match(/^\[([^\]]+)\]\s*(.*)$/);
+
+  if (!m) {
+    return {
+      lyric: raw,
+      chordBasic: null,
+      chordAdv: null
+    };
+  }
+
+  const chordSpec = m[1].trim();
+  const lyric = (m[2] || "").trim();
+
+  const { chordBasic, chordAdv } = parseChordSpec(chordSpec);
+
+  return {
+    lyric,
+    chordBasic,
+    chordAdv
+  };
+}
+
 function parseBarLine(line, options = {}) {
   const {
     cellsPerBar = 4,
-    cellToBeatMap = [1, 2, 3, 4],
-    includeSpacerChord = true
+    cellToBeatMap = [1, 2, 3, 4]
   } = options;
 
-  const colonIndex = line.indexOf(":");
-  if (colonIndex === -1) {
-    throw new Error(`Bar thiếu dấu ":" -> ${line}`);
-  }
-
-  const chordPart = line.slice(0, colonIndex).trim();
-  const lyricPart = line.slice(colonIndex + 1).trim();
-
-  const { chordBasic, chordAdv } = parseChordSpec(chordPart);
-
-  // Mỗi dấu "/" = 1 ô hiển thị
-  const cellTexts = lyricPart.split("/").map((s) => s.trim());
+  // Mỗi dấu "/" = 1 ô
+  const cellTexts = String(line)
+    .split("/")
+    .map((s) => s.trim());
 
   if (cellTexts.length > cellsPerBar) {
     throw new Error(
@@ -122,36 +147,16 @@ function parseBarLine(line, options = {}) {
     cellTexts.push("");
   }
 
-  const tokens = [];
+  const tokens = cellTexts.map((cellText, i) => {
+    const parsed = parseInlineCell(cellText);
 
-  for (let i = 0; i < cellsPerBar; i++) {
-    const lyric = cellTexts[i] || "";
-    const beatIndex = cellToBeatMap[i] ?? 1;
-  
-    let outChordBasic = null;
-    let outChordAdv = null;
-  
-    const isFirstCellOfBar = i === 0;
-    const prevBeatIndex = i > 0 ? cellToBeatMap[i - 1] : null;
-    const isFirstCellOfBeat = i === 0 || beatIndex !== prevBeatIndex;
-  
-    if (isFirstCellOfBar) {
-      // ô đầu bar mang chord thật
-      outChordBasic = chordBasic;
-      outChordAdv = chordAdv;
-    } else if (isFirstCellOfBeat && includeSpacerChord) {
-      // chỉ ô đầu tiên của beat mới mang spacer
-      outChordBasic = " ";
-      outChordAdv = " ";
-    }
-  
-    tokens.push({
-      lyric,
-      chordBasic: outChordBasic,
-      chordAdv: outChordAdv,
-      beatIndex
-    });
-  }
+    return {
+      lyric: parsed.lyric,
+      chordBasic: parsed.chordBasic,
+      chordAdv: parsed.chordAdv,
+      beatIndex: cellToBeatMap[i] ?? 1
+    };
+  });
 
   return { tokens };
 }

@@ -79,7 +79,7 @@
         {
           type: "album",
           title: "Ước mơ tuổi 17 ",
-          desc: "Release 27/09/2025. Jb-Lufe",
+          desc: "Release 09/2025. Jb-Lufe",
           chip: "Single",
           link: "https://youtu.be/FgIijOdivPk?si=pOOiFNZazCiZJPTw",
           cover: "../../IMG/album2.jpg"
@@ -87,7 +87,7 @@
         {
           type: "album",
           title: "Đã đủ rồi",
-          desc: "Release 5/03/2025. Jb-Lufe feat. Fei Nguyen",
+          desc: "Release 03/2025. Jb-Lufe feat. Fei Nguyen",
           chip: "Single",
           link: "https://youtu.be/m95H8jcECBw?si=gx1znzB-0ylaavEC",
           cover: "../../IMG/album1.jpg"
@@ -95,7 +95,7 @@
         {
           type: "album",
           title: "Tương tư",
-          desc: "Coming soon 2026. Jb-Lufe feat. Fei Nguyen, Quynh Trang",
+          desc: "Release 03/2026. Jb-Lufe feat. Fei Nguyen, Quynh Trang",
           chip: "Single",
           link: "#",
           cover: "../../IMG/album3.jpg"

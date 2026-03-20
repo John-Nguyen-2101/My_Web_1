@@ -11,45 +11,45 @@ window.SONG_DATA = {
   key: "C",
   scale: "major",
   quickText: `[ĐIỆP KHÚC]
-C|Cmaj7 : Mừng / Tết / đến / {vạn lộc}
-G|G7 : đến / nhà / nhà /{cánh mai}
-Am : Vàng/ {cành đào}/ hồng / thắm
-Em : tươi/  /  /
+[C|]  Mừng / Tết / đến / {vạn lộc}
+[G|]  đến / nhà / nhà /{cánh mai}
+[Am ] Vàng/ {cành đào}/ hồng / thắm
+[Em ] tươi/  /  /
 
-F : Chúc / cụ / già / {được sống}
-C : lâu / sống / thọ / {cùng con}
-F : cháu / sang / năm / lại
-G : đón / Tết / sang /
+[F ] Chúc / cụ / già / {được sống}
+[C ] lâu / sống / thọ / {cùng con}
+[F ] cháu / sang / năm / lại
+[G ] đón / Tết / sang /
 
-C : Và / kính / chúc / {người người}
-G : sẽ / gặp / lành /{tết sau}
-Am : Được / {nhiều lộc}/ hơn/ tết
-Em : nay/ /  /
+[C ] Và / kính / chúc / {người người}
+[G ] sẽ / gặp / lành /{tết sau}
+[Am ] Được / {nhiều lộc}/ hơn/ tết
+[Em ] nay/ /  /
 
-F : {Tết đến}/ đoàn / tụ / {cùng ở}
-C :  Bên / bếp / hồng/{và nồi}
-F : Bánh/ chưng/ xanh / chờ
-G : Xuân / đang/ sang / 
+[F ] {Tết đến}/ đoàn / tụ / {cùng ở}
+[C ]  Bên / bếp / hồng/{và nồi}
+[F ] Bánh/ chưng/ xanh / chờ
+[G ] Xuân / đang/ sang / 
 [Verse]
-C : Cánh / / én / nơi
-G : nơi /  / / {khắp muôn}
-Am : người / người / đi/hái
-Em : Lộc / / / 
+[C ] Cánh / / én / nơi
+[G ] nơi /  / / {khắp muôn}
+[Am ] người / người / đi/hái
+[Em ] Lộc / / / 
 
-F : Đẹp/  / xinh / đất
-C : trời /  / màu / áo
-F : Trắng / tung/ bay / cùng
-G : Muôn/ ngàn / hoa / 
+[F ] Đẹp/  / xinh / đất
+[C ] trời /  / màu / áo
+[F ] Trắng / tung/ bay / cùng
+[G ] Muôn/ ngàn / hoa / 
 
-C : Trong / /tiếng /trống 
-G : Xuân / / /long 
-Am : Phụng/ về/ đây/ sum
-Em : Vầy/ / /
+[C ] Trong / /tiếng /trống 
+[G ] Xuân / / /long 
+[Am ] Phụng/ về/ đây/ sum
+[Em ] Vầy/ / /
 
-F : Phát /lộc/ tài/ {ở khắp} 
-C : nơi /phố /phường/{Một năm} 
-F : mới/ an/ khang (G)/ bình
-C : an /bên/ nhau.
+[F ] Phát /lộc/ tài/ {ở khắp} 
+[C ] nơi /phố /phường/{Một năm} 
+[F ] mới/ an/ [G]khang / bình
+[C]  an /bên/ nhau.
 `
 };
 

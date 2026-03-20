@@ -389,43 +389,51 @@ function renderVideoByTranspose() {
         inline: "nearest",
       });
     }
-  function makeLineGridNode(tokens, lineIdx) {
-    const grid = document.createElement("div");
-    grid.className = "lineGrid";
-    const cols = tokens.length;
-  
-    grid.style.gridTemplateColumns = `repeat(${cols}, minmax(44px, 1fr))`;
-    if (isPlaying && lineIdx !== activeLine) grid.style.opacity = "0.9";
-  
-    // Row 1: chords
-    tokens.forEach((t) => {
-      const cell = document.createElement("div");
-      cell.className = "gridCell chordCell";
-  
-      const rawChord = getTokenChord(t);   // <= chord theo mode
-      const hasChord = !!rawChord;
-      const isCurrentLine = lineIdx === activeLine;
-      const chordBeatActive =
-        isPlaying && phase !== "countin" && isCurrentLine && hasChord && t.beatIndex === beat;
-
-      if (chordBeatActive) cell.classList.add("cellActive");
-
-      cell.textContent = hasChord ? getDisplayChord(rawChord) : "\u00A0";
-  
-      grid.appendChild(cell);
-    });
-  
-    // Row 2: lyrics
-    tokens.forEach((t) => {
-      const cell = document.createElement("div");
-      cell.className = "gridCell lyricCell";
-      cell.textContent = t.lyric && t.lyric.length ? t.lyric : "\u00A0";
-      grid.appendChild(cell);
-    });
-  
-    return grid;
-  }
-  
+    function makeLineGridNode(tokens, lineIdx) {
+      const grid = document.createElement("div");
+      grid.className = "lineGrid";
+      const cols = tokens.length;
+    
+      grid.style.gridTemplateColumns = `repeat(${cols}, minmax(44px, 1fr))`;
+      if (isPlaying && lineIdx !== activeLine) grid.style.opacity = "0.9";
+    
+      // Row 1: chords
+      tokens.forEach((t, i) => {
+        const cell = document.createElement("div");
+        cell.className = "gridCell chordCell";
+    
+        const rawChord = getTokenChord(t);
+        const hasChord = !!rawChord && String(rawChord).trim() !== "";
+        const isCurrentLine = lineIdx === activeLine;
+    
+        const prevBeatIndex = i > 0 ? tokens[i - 1].beatIndex : null;
+        const isFirstCellOfBeat = i === 0 || t.beatIndex !== prevBeatIndex;
+    
+        const chordBeatActive =
+          isPlaying &&
+          phase !== "countin" &&
+          isCurrentLine &&
+          isFirstCellOfBeat &&
+          t.beatIndex === beat &&
+          shouldHighlightBeat(demoSong, beat);
+    
+        if (chordBeatActive) cell.classList.add("cellActive");
+    
+        cell.textContent = hasChord ? getDisplayChord(rawChord) : "\u00A0";
+    
+        grid.appendChild(cell);
+      });
+    
+      // Row 2: lyrics
+      tokens.forEach((t) => {
+        const cell = document.createElement("div");
+        cell.className = "gridCell lyricCell";
+        cell.textContent = t.lyric && t.lyric.length ? t.lyric : "\u00A0";
+        grid.appendChild(cell);
+      });
+    
+      return grid;
+    }
   function renderSong() {
     elSongRoot.innerHTML = "";
   
@@ -494,6 +502,32 @@ function renderVideoByTranspose() {
       });
       elSongRoot.appendChild(groupRow);
     }
+  }
+  function shouldHighlightBeat(song, beatNum) {
+    const top = song?.timeSigTop;
+    const bottom = song?.timeSigBottom;
+  
+    // 2/4: tô 2 phách
+    if (top === 2 && bottom === 4) {
+      return beatNum === 1 || beatNum === 2;
+    }
+  
+    // 3/4: tô 1 phách
+    if (top === 3 && bottom === 4) {
+      return beatNum === 1;
+    }
+  
+    // 4/4: tô 2 phách (1 và 3)
+    if (top === 4 && bottom === 4) {
+      return beatNum === 1 || beatNum === 3;
+    }
+  
+    // 6/8: tô 2 phách lớn
+    if (top === 6 && bottom === 8) {
+      return beatNum === 1 || beatNum === 2;
+    }
+  
+    return beatNum === 1;
   }
   
   // ------------------------ TICK ------------------------
