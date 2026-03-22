@@ -1,26 +1,7 @@
 // =========================
 // QUICK AUTHORING PARSER
 // =========================
-// Quy ước mới:
-// - Mỗi dấu "/" = 1 ô hiển thị
-// - Số ô mỗi bar phụ thuộc vào nhịp:
-//   2/4 -> 4 ô  (mỗi ô = 1 nốt đơn)
-//   3/4 -> 3 ô  (mỗi ô = 1 nốt đen)
-//   4/4 -> 4 ô  (mỗi ô = 1 nốt đen)
-//   6/8 -> 6 ô  (mỗi ô = 1 nốt đơn)
-//
-// Ví dụ:
-// 2/4
-// C|Cmaj7 : Mừng / tết / đến / {vạn lộc}
-//
-// 4/4
-// C : anh / đi / qua / đây
-//
-// 3/4
-// Am : mưa / rơi / rồi
-//
-// 6/8
-// C : em / đi / trong / cơn / mưa / chiều
+
 // =========================
 
 function slugifySection(text) {
@@ -54,7 +35,7 @@ function getBarGridConfig(song) {
   const top = song?.timeSigTop;
   const bottom = song?.timeSigBottom;
 
-  // 2/4: 4 ô
+  // 2/4: 4 space, devide into 2 beats (1, let, 2, let)
   if (top === 2 && bottom === 4) {
     return {
       cellsPerBar: 4,
@@ -62,7 +43,7 @@ function getBarGridConfig(song) {
     };
   }
 
-  // 3/4: 3 ô
+  // 3/4: 3 space
   if (top === 3 && bottom === 4) {
     return {
       cellsPerBar: 3,
@@ -70,7 +51,7 @@ function getBarGridConfig(song) {
     };
   }
 
-  // 4/4: 4 ô
+  // 4/4: 4 spcae
   if (top === 4 && bottom === 4) {
     return {
       cellsPerBar: 4,
@@ -78,7 +59,7 @@ function getBarGridConfig(song) {
     };
   }
 
-  // 6/8: 6 ô, chia 2 beat lớn
+  // 6/8: 6 SPACE, DEVIDE INTO 2 BEATS (1, tri, let, 2, tri, let)
   if (top === 6 && bottom === 8) {
     return {
       cellsPerBar: 6,
@@ -103,7 +84,7 @@ function parseInlineCell(cellRaw) {
   }
 
   // format: [C] lyric
-  // hoặc: [C|Cmaj7] lyric
+  // OR: [C|Cmaj7] lyric
   const m = raw.match(/^\[([^\]]+)\]\s*(.*)$/);
 
   if (!m) {
@@ -132,7 +113,7 @@ function parseBarLine(line, options = {}) {
     cellToBeatMap = [1, 2, 3, 4]
   } = options;
 
-  // Mỗi dấu "/" = 1 ô
+  // EACH "/" = 1 SPACE 
   const cellTexts = String(line)
     .split("/")
     .map((s) => s.trim());
@@ -179,7 +160,7 @@ function parseQuickLines(inputText, options = {}) {
     if (!rawLine) continue;
     if (rawLine.startsWith("//")) continue;
 
-    // [ĐIỆP KHÚC]
+    // [CHORUS]
     const sectionMatch = rawLine.match(/^\[(.+?)\]$/);
     if (sectionMatch) {
       const sectionName = sectionMatch[1].trim();

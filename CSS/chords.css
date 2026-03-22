@@ -246,3 +246,71 @@
   background: rgba(0,0,0,0.06);
   border-radius: 999px;
 }
+
+/* ====== ALBUM CARD ROW ====== */
+.albumCardRow{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:center;
+  border:1px solid rgba(0,0,0,0.08);
+  border-radius:14px;
+  padding:12px;
+  background:#fafafa;
+  text-decoration:none;
+  color:inherit;
+  min-width:0;
+}
+.albumCardRow:hover{ background:#f3f3f3; }
+.albumCardRow.is-disabled{ opacity:.7; pointer-events:none; }
+
+.albumLeft{ min-width:0; flex:1; }
+.albumTop{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:10px;
+}
+.albumTitle{
+  font-weight:800;
+  line-height:1.2;
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.albumChip{
+  font-size:11px;
+  padding:4px 8px;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,0.12);
+  background:#fff;
+  white-space:nowrap;
+  flex:0 0 auto;
+}
+.albumDesc{
+  margin-top:6px;
+  line-height:1.4;
+  overflow:hidden;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+}
+.albumMedia{
+  width:64px;
+  height:64px;
+  border-radius:12px;
+  overflow:hidden;
+  background:#000;
+  flex:0 0 auto;
+}
+.albumMedia img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.toolCard.is-disabled{
+  pointer-events:none;
+  opacity:.7;
+}

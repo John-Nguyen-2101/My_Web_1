@@ -129,7 +129,7 @@
   
       updateScore();
   
-      // chuyển sang câu mới sau 0.5s
+      // transfer to new row 0.5s
       setTimeout(() => {
         setNewNote();
       }, 500);
