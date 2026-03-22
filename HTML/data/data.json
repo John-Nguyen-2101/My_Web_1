@@ -37,7 +37,7 @@
       "desc": "Release 09/2025. Jb-Lufe",
       "chip": "Single",
       "link": "https://youtu.be/FgIijOdivPk?si=pOOiFNZazCiZJPTw",
-      "cover":"../IMG/album2.jpg"
+      "cover":"/IMG/album2.jpg"
     },
     {
       "type": "album",
@@ -45,7 +45,7 @@
       "desc": "Release 03/2025. Jb-Lufe feat. Fei Nguyen",
       "chip": "Single",
       "link": "https://youtu.be/m95H8jcECBw?si=gx1znzB-0ylaavEC",
-      "cover":"../IMG/album1.jpg"
+      "cover":"/IMG/album1.jpg"
     },
     {
       "type": "album",
@@ -53,7 +53,7 @@
       "desc": "Release 03/2026. Jb-Lufe feat. Fei Nguyen, Quynh Trang",
       "chip": "Single",
       "link": "#",
-      "cover":"../IMG/album3.jpg"
+      "cover":"/IMG/album3.jpg"
     }
   ],
   "products": [
@@ -62,8 +62,8 @@
     { "title": "Course Bundle", "desc": "Mock khóa học/ebook sau này.", "chip": "Digital", "link": "#" }
   ],
   "posts": [
-    { "title": "Passing chord là gì?", "desc": "Giải thích dễ hiểu + ví dụ thực tế.", "chip": "Harmony", "link": "../HTML/Blog/index.html?slug=passing-chord-la-gi" },
-    { "title": "Cách đệm hát không bị lạc tone", "desc": "Checklist tai nghe + hợp âm + nhịp.", "chip": "Guitar", "link": "../HTML/Blog/index.html?slug=dem-hat-khong-bi-lac-tone" }
+    { "title": "Passing chord là gì?", "desc": "Giải thích dễ hiểu + ví dụ thực tế.", "chip": "Harmony", "link": "/HTML/Blog/index.html?slug=passing-chord-la-gi" },
+    { "title": "Cách đệm hát không bị lạc tone", "desc": "Checklist tai nghe + hợp âm + nhịp.", "chip": "Guitar", "link": "/HTML/Blog/index.html?slug=dem-hat-khong-bi-lac-tone" }
     
   ]
 }

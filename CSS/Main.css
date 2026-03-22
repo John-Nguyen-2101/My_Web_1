@@ -1,5 +1,5 @@
 :root{
-    --bg:#172b32;
+    --bg:#303e58;
     --card:#121a2a;
     --card2:#0f1626;
     --text:#eaf0ff;
@@ -153,6 +153,7 @@
     font-size: 16px;
     font-weight: 800;
     margin:0;
+    color: rgb(255, 255, 255);
   }
   .chip{
     padding:6px 10px;
