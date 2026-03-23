@@ -1,6 +1,13 @@
 // ======================================================
 // SHARED UI HELPERS
 // ======================================================
+if (location.pathname.endsWith('index.html')) {
+  history.replaceState(
+    null,
+    '',
+    location.pathname.replace('index.html', '')
+  );
+}
 document.addEventListener("DOMContentLoaded", () => {
   initMobileNav();
   initFooterYear();
