@@ -34,7 +34,7 @@
         title: song.title,
         artist: song.author || "",
         views: Number(song.views || 0),
-        link: `/HTML/chords/chord.html?song=${encodeURIComponent(song.id)}`
+        link: `/Chords/chord.html?song=${encodeURIComponent(song.id)}`
       }));
   }
 
@@ -97,7 +97,7 @@
     el.innerHTML = safeList
       .map((song) => {
         const title = escapeHTML(song.title);
-        const link = `/HTML/chords/chord.html?song=${encodeURIComponent(song.id)}`;
+        const link = `/Chords/chord.html?song=${encodeURIComponent(song.id)}`;
 
         return `
           <a class="listItem" href="${link}">

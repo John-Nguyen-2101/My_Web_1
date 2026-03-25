@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ======================================================
   // DATA FETCHING
   // ======================================================
-  const DATA_PATH = "/HTML/data/data.json";
+  const DATA_PATH = "../Data/data.json";
 
   fetchJson(DATA_PATH)
     .then((data) => {

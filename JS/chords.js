@@ -24,19 +24,19 @@
         title: "Luyện nghe nôt nhạc",
         desc: "Bài tập nhận diện pitch của từng nôt trong scale.",
         status: "Đã có sẵn",
-        link: "../../HTML/tools/index.html"
+        link: "../Tools/index.html"
       },
       {
         title: "Luyện nghe hợp âm",
         desc: "Bài tập nhận diện quality: maj/min/dim/aug/7...",
         status: "Đã có sẵn",
-        link: "../../HTML/tools/index.html"
+        link: "../Tools/index.html"
       },
       {
         title: "Metronome",
         desc: "Máy đếm nhịp đơn giản, có thể tùy chỉnh BPM và time signature.",
         status: "Đã có sẵn",
-        link: "../../HTML/tools/index.html"
+        link: "../Tools/index.html"
       }
     ],
     albums: [
@@ -45,21 +45,21 @@
         desc: "Release 09/2025. Jb-Lufe",
         chip: "Single",
         link: "https://youtu.be/FgIijOdivPk?si=pOOiFNZazCiZJPTw",
-        cover: "../../IMG/album2.jpg"
+        cover: "../IMG/album2.jpg"
       },
       {
         title: "Đã đủ rồi",
         desc: "Release 03/2025. Jb-Lufe feat. Fei Nguyen",
         chip: "Single",
         link: "https://youtu.be/m95H8jcECBw?si=gx1znzB-0ylaavEC",
-        cover: "../../IMG/album1.jpg"
+        cover: "../IMG/album1.jpg"
       },
       {
         title: "Tương tư",
         desc: "Release 03/2026. Jb-Lufe feat. Fei Nguyen, Quynh Trang",
         chip: "Single",
         link: "#",
-        cover: "../../IMG/album3.jpg"
+        cover: "../IMG/album3.jpg"
       }
     ],
     posts: [

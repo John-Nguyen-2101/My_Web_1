@@ -101,7 +101,7 @@
   // DATA LOADING
   // ======================================================
   function loadSongsJson() {
-    return fetchJson("../DATA/songs.json", { cache: "no-store" });
+    return fetchJson("/Data/songs.json", { cache: "no-store" });
   }
 
   // ======================================================

@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      const posts = await fetchJson("/HTML/posts.json", { cache: "no-store" });
+      const posts = await fetchJson("../Data/posts.json", { cache: "no-store" });
       const post = posts.find((p) => p.slug === slug);
 
       if (!post) {
