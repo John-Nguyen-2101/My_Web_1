@@ -16,11 +16,11 @@ window.SONG_LIST = [
     views: 9
   },
   {
-    id: "Ngayxuanlpxv3",
-    title: "Tương Tư",
-    author: "Lufe Baby",
+    id: "50namvesau",
+    title: "50 năm về sau",
+    author: "Đặng Thanh Tuyền",
     bpm: 80,
-    timeSig: "3/4",
+    timeSig: "4/4",
     views: 7
   },
   {

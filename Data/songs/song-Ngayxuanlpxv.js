@@ -40,9 +40,9 @@ window.SONG_DATA = {
 [C ] trời /  / màu / áo
 [F ] Trắng / tung/ bay / cùng
 [G ] Muôn/ ngàn / hoa / 
-
-[C ] Trong / /tiếng /trống 
-[G ] Xuân / / /long 
+[Lên Tone]
+[D ] Trong / /tiếng /trống 
+[A ] Xuân / / /long 
 [Am ] Phụng/ về/ đây/ sum
 [Em ] Vầy/ / /
 
