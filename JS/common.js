@@ -2,11 +2,10 @@
 // SHARED UI HELPERS
 // ======================================================
 if (location.pathname.endsWith('index.html')) {
-  history.replaceState(
-    null,
-    '',
-    location.pathname.replace('index.html', '')
-  );
+  const newPath = location.pathname.replace('index.html', '');
+  const newUrl = newPath + location.search; // giữ ?slug
+
+  history.replaceState(null, '', newUrl);
 }
 document.addEventListener("DOMContentLoaded", () => {
   initMobileNav();

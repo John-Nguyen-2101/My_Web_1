@@ -13,13 +13,13 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!slug) {
       app.innerHTML = `
         <h1>Thiếu slug</h1>
-        <p>Mở đúng dạng: <code>post.html?slug=passing-chord-la-gi</code></p>
+        <p>Mở đúng dạng: <code>index.html?slug=passing-chord-la-gi</code></p>
       `;
       return;
     }
 
     try {
-      const posts = await fetchJson("../Data/posts.json", { cache: "no-store" });
+      const posts = await fetchJson("/Data/posts.json", { cache: "no-store" });
       const post = posts.find((p) => p.slug === slug);
 
       if (!post) {

@@ -62,8 +62,8 @@
     { "title": "Course Bundle", "desc": "Mock khóa học/ebook sau này.", "chip": "Digital", "link": "#" }
   ],
   "posts": [
-    { "title": "Passing chord là gì?", "desc": "Giải thích dễ hiểu + ví dụ thực tế.", "chip": "Harmony", "link": "/Blog/index.html?slug=passing-chord-la-gi" },
-    { "title": "Cách đệm hát không bị lạc tone", "desc": "Checklist tai nghe + hợp âm + nhịp.", "chip": "Guitar", "link": "/Blog/index.html?slug=dem-hat-khong-bi-lac-tone" }
+    { "title": "Passing chord là gì?", "desc": "Giải thích dễ hiểu + ví dụ thực tế.", "chip": "Harmony", "link": "../Blog/index.html?slug=passing-chord-la-gi" },
+    { "title": "Cách đệm hát không bị lạc tone", "desc": "Checklist tai nghe + hợp âm + nhịp.", "chip": "Guitar", "link": "../Blog/index.html?slug=dem-hat-khong-bi-lac-tone" }
     
   ]
 }
