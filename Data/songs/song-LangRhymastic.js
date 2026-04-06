@@ -1,17 +1,17 @@
 window.SONG_DATA  = 
     {
-      id: "Ngayxuanlpxv2",
-      title: "Test nhịp 6/8",
-      author: "Lufe Baby",
-      style: "Ballad 6/8",
-      recommendedTempo: "60–80 BPM",
+      id: "LangRhymastic",
+      title: "Lặng",
+      author: "Rhymastic",
+      style: "Ballad 4/4",
+      recommendedTempo: "90 BPM",
       bpm: 90,
       timeSigTop: 4,
       timeSigBottom: 4,
       meterMode: "simple",
       key: "A",
       scale: "major",
-      quickText: `[ĐOẠN 1]
+      quickText: `[Verse]
    [Aadd9] x/{Nếu biết }/{trước rằng}/{ x sẽ}
   [Dsus2] mãi /{xa nhau}//
   [Dsus2]/{Nếu biết }/{trước rằng}/ sẽ 

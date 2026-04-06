@@ -16,7 +16,7 @@ window.SONG_LIST = [
     views: 7
   },
   {
-    id: "Lang",
+    id: "LangRhymastic",
     title: "Lặng",
     author: "Rhymastic",
     bpm: 90,
@@ -24,35 +24,11 @@ window.SONG_LIST = [
     views: 0
   },
   {
-    id: "Ngayxuanlpxv2",
-    title: "Test nhịp 3/4",
-    author: "Lufe Baby",
+    id: "Daduroi",
+    title: "Đã đủ rồi",
+    author: "Jb-Lufe",
     bpm: 80,
-    timeSig: "3/4",
+    timeSig: "4/4",
     views: 0
-  },
-  {
-    id: "Ngayxuanlpxv3",
-    title: "Test nhịp 3/4",
-    author: "Lufe Baby",
-    bpm: 80,
-    timeSig: "3/4",
-    views: 1
-  },
-  {
-    id: "Ngayxuanlpxv3",
-    title: "Test nhịp 3/4",
-    author: "Lufe Baby",
-    bpm: 80,
-    timeSig: "3/4",
-    views: 1
-  },
-  {
-    id: "Ngayxuanlpxv3",
-    title: "Test nhịp 3/4",
-    author: "Lufe Baby",
-    bpm: 80,
-    timeSig: "3/4",
-    views: 1
   }
 ];

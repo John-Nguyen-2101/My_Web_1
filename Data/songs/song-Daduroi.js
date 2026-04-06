@@ -1,12 +1,12 @@
 window.SONG_DATA = 
     {
-        id: "Ngayxuanlpxv3",
-        title: "Test nhịp 3/4",
-        author: "Lufe Baby",
-        style: "Waltz",
+        id: "Daduroi",
+        title: "Đã đủ rồi",
+        author: "Jb-Lufe",
+        style: "Ballad",
         recommendedTempo: "70–90 BPM",
         bpm: 80,
-        timeSigTop: 3,
+        timeSigTop: 4,
         timeSigBottom: 4,
         meterMode: "simple",
         key: "C",
