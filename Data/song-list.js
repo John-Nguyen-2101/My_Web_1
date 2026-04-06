@@ -8,14 +8,6 @@ window.SONG_LIST = [
     views: 12
   },
   {
-    id: "Ngayxuanlpxv2",
-    title: "Đã Đủ Rồi",
-    author: "Lufe Baby",
-    bpm: 72,
-    timeSig: "6/8",
-    views: 9
-  },
-  {
     id: "50namvesau",
     title: "50 năm về sau",
     author: "Đặng Thanh Tuyền",
@@ -24,43 +16,10 @@ window.SONG_LIST = [
     views: 7
   },
   {
-    id: "Ngayxuanlpxv3",
-    title: "Test nhịp 3/4",
-    author: "Lufe Baby",
-    bpm: 80,
-    timeSig: "3/4",
+    id: "Lang",
+    title: "Lặng",
+    author: "Rhymastic",
+    bpm: 90,
+    timeSig: "4/4",
     views: 0
-  },
-  {
-    id: "Ngayxuanlpxv3",
-    title: "Test nhịp 3/4",
-    author: "Lufe Baby",
-    bpm: 80,
-    timeSig: "3/4",
-    views: 0
-  },
-  {
-    id: "Ngayxuanlpxv3",
-    title: "Test nhịp 3/4",
-    author: "Lufe Baby",
-    bpm: 80,
-    timeSig: "3/4",
-    views: 1
-  },
-  {
-    id: "Ngayxuanlpxv3",
-    title: "Test nhịp 3/4",
-    author: "Lufe Baby",
-    bpm: 80,
-    timeSig: "3/4",
-    views: 1
-  },
-  {
-    id: "Ngayxuanlpxv3",
-    title: "Test nhịp 3/4",
-    author: "Lufe Baby",
-    bpm: 80,
-    timeSig: "3/4",
-    views: 1
-  }
-];
+  }];
