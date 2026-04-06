@@ -22,4 +22,37 @@ window.SONG_LIST = [
     bpm: 90,
     timeSig: "4/4",
     views: 0
-  }];
+  },
+  {
+    id: "Ngayxuanlpxv3",
+    title: "Test nhịp 3/4",
+    author: "Lufe Baby",
+    bpm: 80,
+    timeSig: "3/4",
+    views: 0
+  },
+  {
+    id: "Ngayxuanlpxv3",
+    title: "Test nhịp 3/4",
+    author: "Lufe Baby",
+    bpm: 80,
+    timeSig: "3/4",
+    views: 1
+  },
+  {
+    id: "Ngayxuanlpxv3",
+    title: "Test nhịp 3/4",
+    author: "Lufe Baby",
+    bpm: 80,
+    timeSig: "3/4",
+    views: 1
+  },
+  {
+    id: "Ngayxuanlpxv3",
+    title: "Test nhịp 3/4",
+    author: "Lufe Baby",
+    bpm: 80,
+    timeSig: "3/4",
+    views: 1
+  }
+];
