@@ -5,7 +5,7 @@ window.SONG_DATA = {
   style: "Ballad",
   recommendedTempo: "60–80 BPM",
   bpm: 80,
-  timeSigTop: 2,
+  timeSigTop: 4,
   timeSigBottom: 4,
   meterMode: "simple",
   key: "C",

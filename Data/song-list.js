@@ -24,7 +24,7 @@ window.SONG_LIST = [
     views: 0
   },
   {
-    id: "Ngayxuanlpxv3",
+    id: "Ngayxuanlpxv2",
     title: "Test nhịp 3/4",
     author: "Lufe Baby",
     bpm: 80,
